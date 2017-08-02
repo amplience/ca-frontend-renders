@@ -12,6 +12,8 @@ This repository is intended as an accelerated starting point for implementing Am
         <img src="http://i1.adis.ws/i/csdemo/ca-front-end-readme-banner2" alt="Amplience Content Authoring" title="Amplience" style="margin-left:auto; margin-right:auto; display:block;" width="890px" height="300px" />
     </a>
 </div>
+
+
 ## Table of Contents
 - [Quick Start](#quick-start)
 - [Demo](#demo)
