@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homepage</title>
+    <!-- All styles -->
+    <link rel="stylesheet" href="../../../dist/renders/all/styles.min.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .amp-ca-text {
+            margin-left: 15px;
+            margin-right: 15px
+        }
+
+        div > .ca-image {
+            margin-left: 15px;
+            margin-right: 15px
+        }
+
+        div > .ca-video {
+            margin-left: 15px;
+            margin-right: 15px
+        }
+
+        div > .ca-banner {
+            margin-left: 15px;
+            margin-right: 15px
+        }
+
+        .ca-card-list {
+            margin-left: -35px;
+            margin-right: 15px;
+        }
+
+        .test {
+            padding: 15px;
+            background: #efefef;
+            border-radius: 5px;
+            margin: 15px;
+        }
+
+        .test > div {
+            padding: 15px;
+            background: #bff2b5;
+            border-radius: 5px;
+            margin: 30px 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header-wrap">
+    <div class="header-promotion">FREE DELIVERY | ORDER BEFORE 1PM FOR NEXT DAY DELIVERY | FREE RETURNS</div>
+    <div class="header-content">
+        <a class="logo" href="#">
+            <img src="https://i1.adis.ws/i/csdemo/m02fm899008g_81867bf7?h=40" srcset="https://i1.adis.ws/i/csdemo/m02fm899008g_81867bf7?h=40 1x, https://i1.adis.ws/i/csdemo/m02fm899008g_81867bf7?h=80 2x" class="logo-image">
+        </a>
+
+        <ul class="customer-menu">
+            <li class="first-nav"><a href="#" class="fa fa-map-marker primary-color"></a></li>
+            <li class="second-nav"><a href="#" class="fa fa-user primary-color"></a></li>
+            <li class="third-nav"><a href="" class="fa fa-shopping-cart primary-color"></a></li>
+        </ul>
+
+        <ul class="top-menu">
+            <li><a href="#">Home & Electricals</a></li>
+            <li><a href="#">Inspiration</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="js_homepage_wrap"></div>
+
+<!-- All libs -->
+<script src="../../../dist/renders/all/libs.min.js"></script>
+
+<!-- All templates -->
+<script src="../../../dist/renders/all/templates.min.js"></script>
+
+<script>
+    Handlebars.partials = AmpCa.templates;
+    AmpCa.utils = new AmpCa.Utils();
+
+    AmpCa.utils.getCaData({
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: 'd7214dec-e90b-4ebd-bc86-6627c0af1fb1', // '8877c626-c431-4b78-bae1-cb4ae4758d70',//'aeef66c6-8ddb-4825-b515-289d9c7268be'
+            store: 'csdemo'
+        },
+        callback: function (data) {
+            data[0].renderTypes = renderTypes;
+
+            data[0].contentTypes.forEach(function(contentType){
+                contentType.renderTypes = renderTypes;
+            });
+
+            var template = Handlebars.template(AmpCa.templates.homepage);
+            document.querySelectorAll(".js_homepage_wrap")[0].innerHTML = template(data[0]);
+
+            loryHelpers.initSliders(document.querySelectorAll(".js_slider"));
+            AmpCa.utils.postProcessing.exec('homepage', {
+            });
+
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+
+
+
+</script>
+
+</body>
+</html>

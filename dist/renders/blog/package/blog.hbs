@@ -1,0 +1,10 @@
+<div class="amp-ca-blog js_ca_blog">
+    <div class="amp-ca-blog-title">
+        {{ title }}
+    </div>
+    <div class="amp-ca-blog-content">
+        {{#each content}}
+            <div class="amp-ca-block-wrap">{{dynamicTemplate [@type] ../renderTypes this}}</div>
+        {{/each}}
+    </div>
+</div>

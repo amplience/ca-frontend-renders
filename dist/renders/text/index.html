@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+
+    <link rel="stylesheet" href="../../../dist/renders/text/text.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="js_text_wrap"></div>
+
+<script src="../../reusable/cms-javascript-sdk.min.js"></script>
+
+<script src="../../reusable/handlebars.min.js"></script>
+
+<script src="../../reusable/showdown.min.js"></script>
+
+<script src="../../reusable/utils.js"></script>
+
+<script src="../../reusable/handlebars_helpers.js"></script>
+
+<script src="../../../dist/renders/text/template.text.min.js"></script>
+
+<script>
+
+    AmpCa.utils = new AmpCa.Utils();
+
+    AmpCa.utils.getCaData({
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: '3a8b75af-b2c8-4f48-acbf-b64a9b1342fe',
+            store: 'csdemo'
+        },
+        callback: function (data) {
+            var template = Handlebars.template(AmpCa.templates.text);
+            document.querySelectorAll(".js_text_wrap")[0].innerHTML = template(data[0]);
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+
+
+</script>
+</body>
+</html>

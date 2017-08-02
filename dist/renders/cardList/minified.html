@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cardList</title>
+
+    <!-- All styles -->
+    <link rel="stylesheet" href="../../../dist/renders/all/styles.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="js_card_list_wrap"></div>
+
+<!-- All libs -->
+<script src="../../../dist/renders/all/libs.min.js"></script>
+
+<!-- All templates -->
+<script src="../../../dist/renders/all/templates.min.js"></script>
+
+<script>
+
+    AmpCa.utils = new AmpCa.Utils();
+
+    Handlebars.partials.image = AmpCa.templates.image;
+    Handlebars.partials.card = AmpCa.templates.card;
+
+    AmpCa.utils.getCaData({
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: '0c63e262-50ec-4f04-b3fc-c77ccbd57863',
+            store: 'csdemo'
+        },
+        callback: function (data) {
+            data[0].renderTypes = renderTypes;
+            var template = Handlebars.template(AmpCa.templates.cardList);
+            document.querySelectorAll(".js_card_list_wrap")[0].innerHTML = template(data[0]);
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+</script>
+
+</body>
+</html>

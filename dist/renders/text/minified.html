@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+
+    <!-- All styles -->
+    <link rel="stylesheet" href="../../../dist/renders/all/styles.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="js_text_wrap"></div>
+
+<!-- All libs -->
+<script src="../../../dist/renders/all/libs.min.js"></script>
+
+<!-- All templates -->
+<script src="../../../dist/renders/all/templates.min.js"></script>
+
+<script>
+
+    AmpCa.utils = new AmpCa.Utils();
+
+    AmpCa.utils.getCaData({
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: '3a8b75af-b2c8-4f48-acbf-b64a9b1342fe',
+            store: 'csdemo'
+        },
+        callback: function (data) {
+            var template = Handlebars.template(AmpCa.templates.text);
+            document.querySelectorAll(".js_text_wrap")[0].innerHTML = template(data[0]);
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+
+
+</script>
+</body>
+</html>

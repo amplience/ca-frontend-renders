@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+
+    <link rel="stylesheet" href="../../../dist/renders/slider/slider.min.css"/>
+    <link rel="stylesheet" href="../../../dist/renders/banner/banner.min.css"/>
+    <link rel="stylesheet" href="../../../dist/renders/image/image.min.css"/>
+    <link rel="stylesheet" href="../../../dist/renders/video/video.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="js_slider_wrap" style="margin:0 auto;"></div>
+
+<script src="../../../node_modules/cms-javascript-sdk/dist/cms-javascript-sdk.min.js"></script>
+<script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
+
+<script src="../../reusable/lory.js"></script>
+
+<script src="../../reusable/utils.js"></script>
+<script src="../../reusable/renderTypes.js"></script>
+
+<script src="../../reusable/handlebars_helpers.js"></script>
+
+<script id="slider" type="text/x-handlebars-template">
+    <div class="amp-ca-slider" data-type="{{type}}">
+        <div class="amp-ca-slider-frame">
+            <ul class="amp-ca-slider-slides">
+                {{#each slides}}
+                <li class="amp-ca-slider-slide js_ca_slide">
+                    {{dynamicTemplate [@type] ../renderTypes this}}
+                </li>
+                {{/each}}
+            </ul>
+            <span class="amp-ca-slider-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5">
+                    <g>
+                        <path d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"/>
+                    </g>
+                </svg>
+            </span>
+            <span class="amp-ca-slider-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5">
+                    <g>
+                        <path d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"/>
+                    </g>
+                </svg>
+            </span>
+            {{#if navigationDots}}
+            <ul class="amp-ca-dots">
+                {{#each slides}}
+                <li class="amp-ca-dot"></li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+        {{ampCaSlider}}
+        {{initCaSlider}}
+    </div>
+</script>
+
+<script id="image" type="text/x-handlebars-template">
+    <picture class="amp-ca-image">
+        {{#roundelProperties}}
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(min-width: 1280px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(min-width: 1280px)">
+
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1280&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2560&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(min-width: 1024px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1280&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2560&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(min-width: 1024px)">
+
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1024&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2048&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(min-width: 768px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1024&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2048&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(min-width: 768px)">
+
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=768&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1536&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(max-width: 768px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=768&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1536&$roundel$&{{roundelConfig roundel}} 2x"
+                media="(max-width: 768px)">
+
+        <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}}"
+             srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x,
+             //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
+             class="amp-ca-image-pic" {{#if imageAltText}} alt = "{{imageAltText}}" {{/if}}/>
+        {{else}}
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x"
+                media="(min-width: 1280px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200 2x"
+                media="(min-width: 1280px)">
+
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1280 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2560 2x"
+                media="(min-width: 1024px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1280 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2560 2x"
+                media="(min-width: 1024px)">
+
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1024 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2048 2x"
+                media="(min-width: 768px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1024 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2048 2x"
+                media="(min-width: 768px)">
+
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=768 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1536 2x"
+                media="(max-width: 768px)"
+                type="image/webp">
+        <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=768 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1536 2x"
+                media="(max-width: 768px)">
+
+        <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600"
+             srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x,
+             //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200 2x"
+             class="amp-ca-image-pic" {{#if imageAltText}} alt = "{{imageAltText}}" {{/if}}/>
+        {{/roundelProperties}}
+    </picture>
+
+</script>
+
+<script id="banner" type="text/x-handlebars-template">
+    <div class="amp-ca-banner js_ca_banner">
+        <div class="amp-ca-banner-pic-wrap">
+            <picture class="amp-ca-banner-pic">
+                {{#roundelProperties}}
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(min-width: 1280px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(min-width: 1280px)">
+
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1280&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2560&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(min-width: 1024px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1280&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2560&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(min-width: 1024px)">
+
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1024&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2048&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(min-width: 768px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1024&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2048&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(min-width: 768px)">
+
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=768&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1536&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(max-width: 768px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=768&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1536&$roundel$&{{roundelConfig roundel}} 2x"
+                        media="(max-width: 768px)">
+
+                <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}}"
+                     srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x,
+             //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
+                     class="amp-ca-image-pic" {{#if imageAltText}} alt = "{{imageAltText}}" {{/if}}/>
+                {{else}}
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x"
+                        media="(min-width: 1280px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200 2x"
+                        media="(min-width: 1280px)">
+
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1280 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2560 2x"
+                        media="(min-width: 1024px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1280 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2560 2x"
+                        media="(min-width: 1024px)">
+
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1024 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=2048 2x"
+                        media="(min-width: 768px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1024 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=2048 2x"
+                        media="(min-width: 768px)">
+
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=768 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1536 2x"
+                        media="(max-width: 768px)"
+                        type="image/webp">
+                <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=768 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1536 2x"
+                        media="(max-width: 768px)">
+
+                <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600"
+                     srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x,
+             //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200 2x"
+                     class="amp-ca-image-pic" {{#if imageAltText}} alt = "{{imageAltText}}" {{/if}}/>
+                {{/roundelProperties}}
+            </picture>
+        </div>
+        <div class="amp-ca-banner-info-wrap {{#if stackMobileLayout}}amp-ca-info-bottom{{/if}}" data-align="{{alignment}}">
+            <div class="amp-ca-banner-info">
+                {{#if header}}
+                <div class="amp-ca-banner-header">{{header}}</div>
+                {{/if}}
+                {{#if subheader}}
+                <div class="amp-ca-banner-subheader">{{subheader}}</div>
+                {{/if}}
+                {{#if description}}
+                <div class="amp-ca-banner-description">{{description}}</div>
+                {{/if}}
+                <a href="{{button.url}}" class="amp-ca-banner-button {{#if style}}{{style}}{{/if}}">{{button.label}}</a>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="video" type="text/x-handlebars-template">
+    {{#if video}}
+    <div class ='amp-ca-video-wrap'>
+        <video class="amp-ca-video" poster="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}?protocol=https"
+               controls src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/mp4_720p">
+            <source src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/mp4_720p"
+                    data-res="High" data-bitrate="2119" label="High"
+                    type="video/mpeg4" codecs="h264">
+
+            <source src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/mp4_480p"
+                    data-res="Medium" data-bitrate="689" label="Medium"
+                    type="video/mpeg4" codecs="h264">
+
+            <source src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/webm_480p"
+                    data-res="Medium" data-bitrate="624" label="Medium"
+                    type="video/webm" codecs="vp8">
+        </video>
+        <div class="pause-button inactive"></div>
+        {{ampCaVideo}}
+    </div>
+    {{/if}}
+</script>
+
+<script>
+    Handlebars.partials.slider = Handlebars.compile(document.getElementById('slider').innerHTML);
+    Handlebars.partials.image = Handlebars.compile(document.getElementById('image').innerHTML);
+    Handlebars.partials.banner = Handlebars.compile(document.getElementById('banner').innerHTML);
+    Handlebars.partials.video = Handlebars.compile(document.getElementById('video').innerHTML);
+
+    AmpCa.utils = new AmpCa.Utils();
+    AmpCa.utils.getCaData({
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: 'aafecabb-d1da-4300-9055-2bdbb700a4dd',
+            store: 'csdemo'
+        },
+        callback: function (data) {
+            data[0].renderTypes = renderTypes;
+            document.querySelectorAll(".js_slider_wrap")[0].innerHTML = Handlebars.partials.slider(data[0]);
+            AmpCa.utils.postProcessing.exec('slider', {
+            });
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+</script>
+</body>
+</html>

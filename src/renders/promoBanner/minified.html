@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promo banner</title>
+
+    <!-- All styles -->
+    <link rel="stylesheet" href="../../../dist/renders/all/styles.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="js_promoBanner_wrap" style="max-width:1024px; margin:20px auto;"></div>
+
+<!-- All libs -->
+<script src="../../../dist/renders/all/libs.min.js"></script>
+
+<!-- All templates -->
+<script src="../../../dist/renders/all/templates.min.js"></script>
+
+<script>
+
+    AmpCa.utils = new AmpCa.Utils();
+
+    AmpCa.utils.getCaData({
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: '34e261df-d80c-4d18-a904-63c641e15b3d',
+            store: 'csdemo'
+        },
+        callback: function (data) {
+            var template = Handlebars.template(AmpCa.templates.promoBanner);
+            document.querySelectorAll(".js_promoBanner_wrap")[0].innerHTML = template(data[0]);
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+
+</script>
+</body>
+</html>

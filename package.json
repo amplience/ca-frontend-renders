@@ -1,0 +1,48 @@
+{
+  "name": "ca-frontend-renders",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.org/amplience/ca-frontend-renders.git"
+  },
+  "description": "Amplience Frontend modules",
+  "main": "src/",
+  "author": "Amplience",
+  "dependencies": {
+    "cms-javascript-sdk": "amplience/cms-javascript-sdk#2d7cb9d",
+    "handlebars": "3.0.3",
+    "lory.js": "2.2.1",
+    "showdown": "1.7.1"
+  },
+  "devDependencies": {
+    "del": "3.0.0",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "4.0.0",
+    "gulp-clean-css": "3.4.1",
+    "gulp-concat": "2.6.1",
+    "gulp-connect": "5.0.0",
+    "gulp-declare": "0.3.0",
+    "gulp-handlebars": "4.0.0",
+    "gulp-htmlmin": "3.0.0",
+    "gulp-processhtml": "1.0.1",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "2.6.0",
+    "gulp-uglify": "3.0.0",
+    "gulp-watch": "4.3.8",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "pump": "1.0.2"
+  },
+  "directories": {},
+  "keywords": [
+    "AMP",
+    "Amplience"
+  ],
+  "license": "ISC"
+}

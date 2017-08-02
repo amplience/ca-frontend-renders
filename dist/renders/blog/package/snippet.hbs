@@ -1,0 +1,33 @@
+<div class="amp-ca-snippet js_ca_snippet">
+    {{#if image}}
+        <div class="amp-ca-image">
+            {{dynamicTemplate renderTypes.image renderTypes image}}
+        </div>
+    {{/if}}
+
+    {{#if title}}
+        <div class="amp-ca-title">{{title}}</div>
+    {{else}}
+        {{#if mainBlogTitle}}
+            <div class="amp-ca-title">{{mainBlogTitle}}</div>
+        {{/if}}
+    {{/if}}
+
+    {{#if description}}
+        <div class="amp-ca-description">{{description}}</div>
+    {{/if}}
+
+    {{#if cta}}
+        {{#if cta.value}}
+            <div class = "amp-ca-link">
+                <a href="{{cta.value}}">
+                    {{#if cta.label}}
+                        {{cta.label}}
+                    {{else}}
+                        Read more >>
+                    {{/if}}
+                </a>
+            </div>
+        {{/if}}
+    {{/if}}
+</div>

@@ -1,0 +1,46 @@
+.amp-ca-blog {
+  overflow: hidden;
+  margin: 40px 0;
+  min-width: 400px;
+
+  * {
+    marign: 0;
+    padding: 0;
+  }
+
+  .amp-ca-blog-title {
+    font-size: 2em;
+    text-align:center;
+  }
+
+  .amp-ca-blog-content {
+    margin-top: 20px;
+  }
+}
+.amp-ca-snippet{
+  .amp-ca-image {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    display: block;
+    min-width: 400px;
+    img {
+      width: 100%;
+      user-select: none;
+    }
+  }
+  .amp-ca-title{
+    text-transform: uppercase;
+    font-size: 2em;
+    margin: 20px;
+  }
+  .amp-ca-description {
+    padding: 20px;
+  }
+  .amp-ca-link{
+    margin: 20px;
+    font-weight: bold;
+  }
+}
+

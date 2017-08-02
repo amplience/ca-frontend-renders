@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>externalBlock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .test {
+            padding: 20px;
+            background: #efefef;
+            border-radius: 5px;
+            margin: 20px;
+        }
+
+        .test > div {
+            padding: 20px;
+            background: #bff2b5; дава
+            border-radius: 5px;
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="js_external_wrap"></div>
+
+
+<script src="https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/reusable/cms-javascript-sdk.min.js"></script>
+<script src="https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/reusable/handlebars.min.js"></script>
+<script src="https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/reusable/utils.js"></script>
+
+<script src="https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/renders/externalBlock/template.externalBlock.min.js"></script>
+
+<script>
+
+    function getQueryVar(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            if (decodeURIComponent(pair[0]) == variable) {
+                return decodeURIComponent(pair[1]);
+            }
+        }
+        return false;
+    }
+
+    AmpCa.utils = new AmpCa.Utils();
+
+    AmpCa.utils.getCaData({
+        url: getQueryVar('src'),
+        callback: function (data) {
+            var template = Handlebars.template(AmpCa.templates.externalBlock);
+            document.querySelectorAll(".js_external_wrap")[0].innerHTML = template(data[0]);
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+
+</script>
+
+</body>
+</html>

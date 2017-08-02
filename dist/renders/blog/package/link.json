@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://schema.cms.amplience.com/{{self.id}}",
+  "meta": {
+    "name": "Link",
+    "description": "",
+    "icons": [
+      {
+        "size": 256,
+        "url": "//apps.dev-artifacts.adis.ws/cms-icons/master/latest/256/ca-types-cta.png"
+      }
+    ],
+    "card": {
+      "uri": "//apps.dev-artifacts.adis.ws/cms-cards/master/latest/text/index.html",
+      "mapping": {
+        "headline": "/label"
+      }
+    },
+    "context": "http://context.cms.amplience.com/{{self.context.id}}"
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/self"
+    },
+    {
+      "$ref": "http://schema.system.cms.amplience.com/v0.0#/content-base"
+    }
+  ],
+  "definitions": {
+    "self": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255,
+          "_label": {
+            "value": "Label",
+            "hint": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/text"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000,
+          "_label": {
+            "value": "Value",
+            "hint": "A relative URL, absolute URL or an ID"
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/text"
+        }
+      },
+      "required": []
+    }
+  }
+}

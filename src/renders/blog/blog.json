@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://schema.cms.amplience.com/{{self.id}}",
+  "meta": {
+    "name": "Blog",
+    "description": "",
+    "context": "http://context.cms.amplience.com/{{self.context.id}}",
+    "icons": [
+      {
+        "size": 256,
+        "url": "//apps.dev-artifacts.adis.ws/cms-icons/develop/v0.4.0/256/ca-types-blog.png"
+      }
+    ],
+    "card": [
+      {
+        "id": "defaultCard",
+        "category": "card",
+        "default": true,
+        "label": "Default card",
+        "uri": "//apps.dev-artifacts.adis.ws/cms-cards/master/latest/gallery/index.html",
+        "mapping": {
+          "image0": "/snippet/image/image",
+          "headline": "/title"
+        }
+      },
+      {
+        "id": "defaultviz",
+        "category": "visualization",
+        "default": true,
+        "label": "Default Visualization",
+        "uri": "https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/renders/blog/package/visualisation.html"
+      }
+    ]
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/self"
+    },
+    {
+      "$ref": "http://schema.system.cms.amplience.com/v0.0#/content-base"
+    }
+  ],
+  "definitions": {
+    "self": {
+      "type": "object",
+      "properties": {
+        "snippet": {
+          "type": "object",
+          "$ref": "http://schema.cms.amplience.com/{{blog-snippet.id}}",
+          "_semanticType": "http://semantic-type.cms.amplience.com/content",
+          "_interpolate": true,
+          "_label": {
+            "value": "Snippet",
+            "hint": ""
+          }
+        },
+        "title": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255,
+          "_label": {
+            "value": "Title",
+            "hint": "",
+            "validation": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/text"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Cats",
+              "Fish",
+              "Pet News"
+            ]
+          },
+          "_label": {
+            "value": "Keywords",
+            "hint": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/enum"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "http://schema.system.cms.amplience.com/v0.0#/content-link"
+              },
+              {
+                "properties": {
+                  "@type": {
+                    "enum": [
+                      "http://schema.cms.amplience.com/{{text.id}}",
+                      "http://schema.cms.amplience.com/{{image.id}}",
+                      "http://schema.cms.amplience.com/{{video.id}}"
+                    ]
+                  }
+                }
+              }
+            ],
+            "_semanticType": "http://semantic-type.cms.amplience.com/content"
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "_label": {
+            "value": "Content",
+            "hint": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/list"
+        }
+      },
+      "required": []
+    }
+  }
+}

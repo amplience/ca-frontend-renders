@@ -1,0 +1,12 @@
+.amp-ca-image {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  display: block;
+  min-width: 400px;
+  img {
+    width: 100%;
+    user-select: none;
+  }
+}
