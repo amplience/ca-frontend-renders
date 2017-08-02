@@ -1,11 +1,5 @@
-<div style="width: 200px; height: 110px; margin-left:auto; margin-right:auto; display:block;"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 70 70" xml:space="preserve">
-<path d="M27.9,42C14.4,42,6.1,33.5,6.1,19.9c0-0.5,0.4-0.9,0.9-0.9s0.9,0.4,0.9,0.9c0,12.6,7.7,20.4,20.1,20.4
-    c0.5,0,0.9,0.4,0.9,0.9S28.4,42,27.9,42z"></path>
-<polygon points="16.1,27.1 15.4,33.2 21.5,32.4 "></polygon>
-<rect x="17.3" y="18.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -7.6456 25.2744)" width="18.9" height="7.5"></rect>
-<path d="M31.9,11.3l5.3,5.3c0,0,1.9-2,2.5-2.5c0.5-0.5,0.5-1.4,0-1.9c-0.5-0.5-2.9-2.9-3.4-3.4c-0.5-0.5-1.5-0.5-1.9,0
-    C33.9,9.3,31.9,11.3,31.9,11.3z"></path>
-</svg>
+<div style="width: 200px; height: 110px; margin-left:auto; margin-right:auto; display:block;">
+<img src="http://i1.adis.ws/i/csdemo/ca.png" alt="Amplience Content Authoring" title="Amplience" style="margin-left:auto; margin-right:auto; display:block;" width="138px" height="137px" />
 </div>
 </br>
 
