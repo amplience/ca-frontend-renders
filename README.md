@@ -4,7 +4,7 @@
 </br>
 
 
-# Content Authoring Frontend Renders #
+# Content Authoring Accelerators #
 This repository is intended as an accelerated starting point for implementing Amplience Content Authoring; it contains commonly used content types and the front end render templates required to display them.
  
 <div align="center">
@@ -27,10 +27,13 @@ This repository is intended as an accelerated starting point for implementing Am
     - [Development](#development)
     - [Tests](#development)
     - [Bug / Feature Request](#bug-/-feature-request)
+    
 ## Quick Start
+
 ```bash
 # Install dependencies 
 $ npm install
+
 # Build project
 $ gulp
 ```
@@ -63,10 +66,12 @@ amp.inlineContent(JSON.parse(data));
 ```
 - `showdown.min.js` is used to parse text with markdown and convert it into semantic html.
 - `lory.js` is a slider library and is used for slider renders.
+
 ## Building minified and concatenated files
 ```bash
 # Install dependencies 
 $ npm install
+
 # Build minified project
 $ gulp buildAllMin
 ```
