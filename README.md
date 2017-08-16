@@ -7,8 +7,6 @@
 # Content Authoring Accelerators #
 This repository is intended as an accelerated starting point for implementing Amplience Content Authoring; it contains commonly used content types and the front end render templates required to display them.
  
- Trivial coops change to test stuff
-
 <div align="center">
     <a href="http://amplience.com/">
         <img src="http://i1.adis.ws/i/csdemo/ca-front-end-readme-banner2" alt="Amplience Content Authoring" title="Amplience" style="margin-left:auto; margin-right:auto; display:block;" width="890px" height="300px" />
