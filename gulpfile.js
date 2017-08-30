@@ -15,6 +15,9 @@ var processhtml = require('gulp-processhtml');
 var del = require('del');
 var concat = require("gulp-concat");
 
+var insert = require("gulp-insert");
+var addSrc = require("gulp-add-src");
+
 var connect = require('gulp-connect');
 var watch = require('gulp-watch');
 var name;
@@ -31,28 +34,28 @@ var excludeReusable = {
 var reusable = './dist/reusable/*.js';
 
 gulp.task('addDependencies', ['build'], function () {
-        for (var module in dependencies) {
-            var fullReusable = [reusable];
-            for (var res in excludeReusable) {
-                fullReusable.push(excludeReusable[res]);
-            }
-
-            if (excludeReusable[module]) {
-                fullReusable.splice(fullReusable.indexOf(excludeReusable[module]), 1);
-            }
-
-            dependencies[module].forEach(function (currentDependency) {
-                if (excludeReusable[currentDependency]) {
-                    fullReusable.splice(fullReusable.indexOf(excludeReusable[currentDependency]), 1);
-                }
-                gulp.src(['./dist/renders/' + currentDependency + '/package/**/*', '!./dist/renders/' + currentDependency + '/package/**/README.md'])
-                    .pipe(gulp.dest('./dist/renders/' + module + '/package/dependencies/' + currentDependency));
-
-            });
-
-            gulp.src(fullReusable)
-                .pipe(gulp.dest('./dist/renders/' + module + '/package/' + libName));
+    for (var module in dependencies) {
+        var fullReusable = [reusable];
+        for (var res in excludeReusable) {
+            fullReusable.push(excludeReusable[res]);
         }
+
+        if (excludeReusable[module]) {
+            fullReusable.splice(fullReusable.indexOf(excludeReusable[module]), 1);
+        }
+
+        dependencies[module].forEach(function (currentDependency) {
+            if (excludeReusable[currentDependency]) {
+                fullReusable.splice(fullReusable.indexOf(excludeReusable[currentDependency]), 1);
+            }
+            gulp.src(['./dist/renders/' + currentDependency + '/package/**/*', '!./dist/renders/' + currentDependency + '/package/**/README.md'])
+                .pipe(gulp.dest('./dist/renders/' + module + '/package/dependencies/' + currentDependency));
+
+        });
+
+        gulp.src(fullReusable)
+            .pipe(gulp.dest('./dist/renders/' + module + '/package/' + libName));
+    }
 });
 
 
@@ -113,9 +116,10 @@ gulp.task('concatAll', ['build'], function () {
         .pipe(concat("templates.min.js"))
         .pipe(gulp.dest('./dist/renders/all'));
 
-    gulp.src(['./dist/reusable/*.js', './src/renders/slider/js/sliderHelper.js'])
-        .pipe(concat("libs.min.js"))
+    gulp.src(['./dist/reusable/*.js', './src/renders/slider/js/sliderHelper.js', '!./dist/reusable/lory.min.js', '!./dist/reusable/showdown.min.js'])
         .pipe(uglify())
+        .pipe(addSrc.append(['./dist/reusable/lory.min.js', './dist/reusable/showdown.min.js']))
+        .pipe(concat("libs.min.js"))
         .pipe(gulp.dest('./dist/renders/all'));
 
     gulp.src(['./dist/renders/*/*.min.css'])
@@ -249,7 +253,6 @@ gulp.task('reusable-js-min', function (cb) {
                 name = path.dirname.slice(0, path.dirname.indexOf('js') - 1);
                 path.dirname = name;
                 path.basename = path.basename
-                //+ '.min';
             }),
             gulp.dest('dist')
         ],
@@ -261,10 +264,30 @@ gulp.task('copy-node-modules', function () {
             'node_modules/cms-javascript-sdk/dist/cms-javascript-sdk.min.js',
             'node_modules/handlebars/dist/handlebars.min.js',
             'node_modules/showdown/dist/showdown.min.js',
-            'node_modules/lory.js/dist/lory.js'
+            'node_modules/lory.js/dist/lory.min.js'
         ])
         .pipe(gulp.dest('dist/reusable'));
 });
+
+gulp.task('addLoryLicense', ['copy-node-modules'], function () {
+    return gulp.src('node_modules/lory.js/LICENSE')
+        .pipe(insert.prepend('/*'))
+        .pipe(insert.append('*/'))
+        .pipe(addSrc.append('dist/reusable/lory.min.js'))
+        .pipe(concat("lory.min.js"))
+        .pipe(gulp.dest('dist/reusable'))
+
+})
+
+gulp.task('addShowdownLicense', ['copy-node-modules'], function () {
+    return gulp.src('node_modules/showdown/license.txt')
+        .pipe(insert.prepend('/*'))
+        .pipe(insert.append('*/'))
+        .pipe(addSrc.append('dist/reusable/showdown.min.js'))
+        .pipe(concat("showdown.min.js"))
+        .pipe(gulp.dest('dist/reusable'));
+
+})
 
 gulp.task('copy-viewer-kit-modules', function () {
     return gulp.src(['bower_components/jquery-ui/ui/jquery.ui.core.js', 'bower_components/jquery-ui/ui/jquery.ui.widget.js',
@@ -277,7 +300,7 @@ gulp.task('renders-build', ['renders-html', 'renders-sass', 'renders-templates',
     'renders-js-copy', 'renders-files-copy', 'renders-types-copy', 'renders-js-min'], function () {
 });
 
-gulp.task('build', ['del', 'copy-node-modules', 'reusable-js-min', 'renders-build'], function () {
+gulp.task('build', ['del', 'copy-node-modules', 'addLoryLicense', 'addShowdownLicense', 'reusable-js-min', 'renders-build'], function () {
 
 });
 

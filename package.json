@@ -20,6 +20,7 @@
   "devDependencies": {
     "del": "3.0.0",
     "gulp": "3.9.1",
+    "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "4.0.0",
     "gulp-clean-css": "3.4.1",
     "gulp-concat": "2.6.1",
@@ -27,6 +28,7 @@
     "gulp-declare": "0.3.0",
     "gulp-handlebars": "4.0.0",
     "gulp-htmlmin": "3.0.0",
+    "gulp-insert": "^0.5.0",
     "gulp-processhtml": "1.0.1",
     "gulp-rename": "1.2.2",
     "gulp-sass": "3.1.0",
