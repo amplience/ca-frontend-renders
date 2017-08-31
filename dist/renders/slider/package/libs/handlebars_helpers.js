@@ -19,7 +19,7 @@ if (typeof Handlebars !== 'undefined') {
             renderTypes = context.renderTypes;
         }
 
-        var parsedId = id.substring(id.lastIndexOf('/') + 1, id.length);
+        var parsedId = id.indexOf('/') === -1 ? id : id.substring(id.lastIndexOf('/') + 1, id.length);
         var matchedTemplate;
         for (var name in renderTypes) {
             if (parsedId === renderTypes[name]) {
