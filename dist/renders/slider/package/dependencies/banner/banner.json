@@ -19,8 +19,8 @@
                 "label": "Default card",
                 "uri": "//apps.dev-artifacts.adis.ws/cms-cards/master/latest/gallery/index.html",
                 "mapping": {
-                    "headline": "/title",
-                    "image0": "/image"
+                    "headline": "/_title",
+                    "image0": "/image/image"
                 }
             },
             {
@@ -48,23 +48,23 @@
                     "type": "object",
                     "allOf": [
                         {
-                            "$ref": "http://schema.system.cms.amplience.com/v0.0#/di-asset-link"
+                            "$ref": "http://schema.system.cms.amplience.com/v0.0#/content-link"
                         },
                         {
                             "properties": {
-                                "mediaType": {
+                                "@type": {
                                     "enum": [
-                                        "image"
+                                        "http://schema.cms.amplience.com/{{image.id}}"
                                     ]
                                 }
                             }
                         }
                     ],
                     "_label": {
-                        "value": "Image",
+                        "value": "image",
                         "hint": ""
                     },
-                    "_semanticType": "http://semantic-type.cms.amplience.com/asset"
+                    "_semanticType": "http://semantic-type.cms.amplience.com/content"
                 },
                 "subheader": {
                     "type": "string",
@@ -123,8 +123,8 @@
                 },
                 "bannerColor": {
                     "type": "string",
-                    "minLength":7,
-                    "maxLength":7,
+                    "minLength": 7,
+                    "maxLength": 7,
                     "_label": {
                         "value": "Banner Color",
                         "hint": "enter a hexref including the # e.g #ff00ff"
