@@ -2,7 +2,19 @@
     <div class="amp-ca-banner-pic-wrap">
         {{dynamicTemplate renderTypes.image renderTypes image}}
     </div>
-    <div class="amp-ca-banner-info-wrap {{#if stackMobileLayout}}amp-ca-info-bottom{{/if}}" data-align="{{alignment}}">
+    <div class="amp-ca-banner-info-wrap
+    {{#if stackMobileLayout}}amp-ca-info-bottom{{/if}}
+        {{#unless header}}
+            {{#unless subheader}}
+                {{#unless description}}
+                    {{#unless button.label}}
+                        amp-ca-hide
+                     {{/unless}}
+                {{/unless}}
+            {{/unless}}
+        {{/unless}}"
+         data-align="{{#if alignment}}{{alignment}}{{else}}left{{/if}}">
+
         <div class="amp-ca-banner-info" style="{{#bannerConfig}} {{/bannerConfig}}">
             {{#if header}}
                 <div class="amp-ca-banner-header">{{header}}</div>
@@ -13,7 +25,10 @@
             {{#if description}}
                 <div class="amp-ca-banner-description">{{description}}</div>
             {{/if}}
-            <a href="{{button.url}}" class="amp-ca-banner-button {{#if style}}{{style}}{{/if}}">{{button.label}}</a>
+            {{#if button.label}}
+                <a href="{{button.url}}"
+                   class="amp-ca-banner-button {{#if style}}{{style}}{{/if}}">{{button.label}}</a>
+            {{/if}}
         </div>
     </div>
 </div>
