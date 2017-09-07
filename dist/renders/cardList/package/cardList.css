@@ -31,6 +31,24 @@
   max-height: 250px;
 }
 
+.amp-ca-card-list.amp-ca-cards-hero .amp-ca-card-wrap {
+  margin: 0 0 50px 0;
+}
+
+.amp-ca-card-list.amp-ca-cards-hero .amp-ca-card {
+  float: right;
+  width: 30%;
+}
+
+.amp-ca-card-list.amp-ca-cards-hero .amp-ca-card.amp-ca-card-1 {
+  float: left;
+  width: 70%;
+}
+
+.amp-ca-card-list.amp-ca-cards-hero .amp-ca-card.amp-ca-card-1 .amp-ca-card-wrap {
+  margin-right: 20px;
+}
+
 .amp-ca-prod-5-rows .amp-ca-card {
   width: 20%;
 }
@@ -60,6 +78,15 @@
   }
   .amp-ca-prod-3-rows .amp-ca-card {
     width: 50%;
+  }
+  .amp-ca-prod-3-rows.amp-ca-cards-hero .amp-ca-card {
+    width: 100%;
+  }
+  .amp-ca-prod-3-rows.amp-ca-cards-hero .amp-ca-card.amp-ca-card-1 {
+    width: 100%;
+  }
+  .amp-ca-prod-3-rows.amp-ca-cards-hero .amp-ca-card.amp-ca-card-1 .amp-ca-card-wrap {
+    margin-right: 0;
   }
   .amp-ca-prod-2-rows .amp-ca-card {
     width: 50%;

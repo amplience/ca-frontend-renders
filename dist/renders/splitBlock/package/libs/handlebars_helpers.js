@@ -6,7 +6,7 @@ if (typeof Handlebars !== 'undefined') {
         return encodeURIComponent(url);
     });
 
-    Handlebars.registerHelper('dynamicTemplate', function (id, renderTypes, context) {
+    Handlebars.registerHelper('dynamicTemplate', function (id, renderTypes, context, addTemplateClassname) {
         if (id === false) {
             id = context['@type'];
         }
@@ -33,7 +33,25 @@ if (typeof Handlebars !== 'undefined') {
             return "Template matching id: " + id + ' not found';
         }
 
+        console.log(addTemplateClassname);
+
+
+        context.addTemplateClassname =  typeof addTemplateClassname !== 'undefined' ? addTemplateClassname : '';
+
         return new Handlebars.SafeString(matchedTemplate(context));
+    });
+
+    Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
+        lvalue = parseFloat(lvalue);
+        rvalue = parseFloat(rvalue);
+
+        return {
+            "+": lvalue + rvalue,
+            "-": lvalue - rvalue,
+            "*": lvalue * rvalue,
+            "/": lvalue / rvalue,
+            "%": lvalue % rvalue
+        }[operator];
     });
 
     Handlebars.registerHelper('bannerConfig',function (opts) {

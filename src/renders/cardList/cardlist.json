@@ -57,6 +57,14 @@
           },
           "_semanticType": "http://semantic-type.cms.amplience.com/text"
         },
+        "heroList": {
+          "type": "boolean",
+          "_label": {
+            "value": "Hero format",
+            "hint": "Hero format supports exactly 3 cards"
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/boolean"
+        },
         "cards": {
           "type": "array",
           "items": {
