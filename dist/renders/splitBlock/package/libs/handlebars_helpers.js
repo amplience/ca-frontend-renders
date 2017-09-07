@@ -33,11 +33,7 @@ if (typeof Handlebars !== 'undefined') {
             return "Template matching id: " + id + ' not found';
         }
 
-        console.log(addTemplateClassname);
-
-
         context.addTemplateClassname =  typeof addTemplateClassname !== 'undefined' ? addTemplateClassname : '';
-
         return new Handlebars.SafeString(matchedTemplate(context));
     });
 
