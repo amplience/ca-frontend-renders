@@ -38,10 +38,6 @@
   width: 30%;
 }
 
-.amp-ca-splitBlock .amp-ca-split-part:first-child {
-  padding: 0 40px;
-}
-
 .amp-ca-splitBlock .amp-ca-image, .amp-ca-splitBlock .amp-ca-video {
   margin: 20px auto;
 }
