@@ -69,7 +69,7 @@
         "imageAltText": {
           "type": "string",
           "minLength": 0,
-          "maxLength": 50,
+          "maxLength": 150,
           "_label": {
             "value": "Image alt text",
             "hint": "",
