@@ -30,6 +30,12 @@
   }
 
   &.amp-ca-cards-hero {
+
+    .amp-ca-card-list-wrap {
+      margin-left:0;
+      overflow: hidden;
+    }
+
     .amp-ca-card-wrap{
       margin:0 0 50px 0;
     }
