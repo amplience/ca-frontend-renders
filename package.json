@@ -13,7 +13,7 @@
   "author": "Amplience",
   "dependencies": {
     "cms-javascript-sdk": "amplience/cms-javascript-sdk#2d7cb9d",
-    "handlebars": "3.0.3",
+    "handlebars": "4.0.1",
     "lory.js": "2.2.1",
     "showdown": "1.7.1"
   },

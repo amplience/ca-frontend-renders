@@ -179,7 +179,9 @@ gulp.task('renders-templates', function () {
             path.dirname = name + '/package';
         }))
         .pipe(gulp.dest('dist/renders'))
-        .pipe(handlebars())
+        .pipe(handlebars({
+            handlebars: require('handlebars')
+        }))
         .pipe(declare({
             namespace: 'AmpCa.templates'
         }))
