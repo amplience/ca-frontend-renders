@@ -151,13 +151,6 @@ if (typeof Handlebars !== 'undefined') {
         return new Handlebars.SafeString(converter.makeHtml(text));
     });
 
-    Handlebars.registerHelper('ampCaVideo', function () {
-        var s = ' data-is-firefox=';
-        s += +!!(window.navigator.userAgent.indexOf('Firefox') >= 0);
-
-        var dataElement = '<script type="text/plain" class="video-settings"' + s + ' ></script>';
-        return new Handlebars.SafeString(dataElement);
-    });
 }
 
 else {

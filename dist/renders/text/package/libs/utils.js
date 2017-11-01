@@ -73,11 +73,11 @@
                 });
             },
             dependencies: {
-                slider: ['fixFirefoxWhiteOverlay', 'fixVideoButton', 'fixAndroidSwipeOverTheVideo'],
-                video: ['fixFirefoxWhiteOverlay', 'fixVideoButton'],
-                splitBlock: ['fixFirefoxWhiteOverlay', 'fixVideoButton'],
-                blog: ['fixFirefoxWhiteOverlay', 'fixVideoButton'],
-                homepage: ['fixFirefoxWhiteOverlay', 'fixVideoButton','fixAndroidSwipeOverTheVideo'],
+                slider: ['fixVideoButton', 'fixAndroidSwipeOverTheVideo'],
+                video: ['fixVideoButton'],
+                splitBlock: ['fixVideoButton'],
+                blog: ['fixVideoButton'],
+                homepage: ['fixVideoButton','fixAndroidSwipeOverTheVideo'],
             },
             handlers: {
                 fixAndroidSwipeOverTheVideo: function () {
@@ -106,18 +106,6 @@
                         });
 
                     }
-                },
-                fixFirefoxWhiteOverlay: function () {
-                    var videos = document.getElementsByClassName("amp-ca-video");
-                    var videoSettings = document.getElementsByClassName("video-settings");
-                    videos = Array.prototype.slice.call(videos, 0);
-                    videos.forEach(function (video, ix) {
-                        var settings = {};
-                        settings.isFirefox = videoSettings[ix].dataset['isFirefox'];
-                        if (+settings.isFirefox ) {
-                           video.currentTime = 0.0001;
-                        }
-                    });
                 },
                 fixVideoButton: function(){
                     var videos = document.querySelectorAll('.amp-ca-video');
