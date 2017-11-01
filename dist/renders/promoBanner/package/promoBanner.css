@@ -40,6 +40,10 @@
   opacity: 0.8;
 }
 
+.amp-ca-promo-banner .amp-ca-promo-text-wrap {
+  overflow: hidden;
+}
+
 .amp-ca-promo-banner .amp-ca-promo-ico {
   float: left;
   margin-right: 15px;
