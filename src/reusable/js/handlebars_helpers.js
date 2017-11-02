@@ -135,7 +135,7 @@ if (typeof Handlebars !== 'undefined') {
 
     Handlebars.registerHelper('showdown', function (text) {
         if (typeof showdown === 'undefined') {
-            return 'Showdown text fromatting plugin is not initialized';
+            return text || '';
         }
         var converter = new showdown.Converter({
             noHeaderId: true,
@@ -148,7 +148,7 @@ if (typeof Handlebars !== 'undefined') {
             text = '';
         }
 
-        return new Handlebars.SafeString(converter.makeHtml(text));
+        return new Handlebars.SafeString(text);
     });
 
 }
