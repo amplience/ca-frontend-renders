@@ -1,6 +1,7 @@
 <div class="amp-ca-splitBlock{{#if split}}{{else}} full-size{{/if}}">
     {{#each content}}
         <div class="amp-ca-split-part {{splitBlock @index ../split}}">
+            {{!-- image render type --}}
             {{#iff [@type] '==' 'http://schema.cms.amplience.com/f0b1f9c8-9fbd-4470-aeb2-543c3cb01f19'}}
                 <picture class="amp-ca-image">
                     {{#roundelProperties}}
@@ -65,6 +66,7 @@
                 </picture>
             {{/iff}}
 
+            {{!-- video render type --}}
             {{#iff [@type] '==' 'http://schema.cms.amplience.com/eac8a783-932e-4900-bd96-bcaa84646499'}}
                 {{#if video}}
                     <div class='amp-ca-video-wrap'>
@@ -88,6 +90,7 @@
                 {{/if}}
             {{/iff}}
 
+            {{!-- text render type --}}
             {{#iff [@type] '==' 'http://schema.cms.amplience.com/c6fe6238-4752-47bc-bc5e-3413d0d08d30'}}
                 <div class="amp-ca-text">
                     {{{showdown text}}}

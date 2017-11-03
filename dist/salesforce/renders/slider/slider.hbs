@@ -3,6 +3,7 @@
         <ul class="amp-ca-slider-slides js_slides">
             {{#each slides}}
                 <li class="amp-ca-slider-slide js_ca_slide">
+                    {{!-- image render type --}}
                     {{#iff [@type] '==' 'http://schema.cms.amplience.com/f0b1f9c8-9fbd-4470-aeb2-543c3cb01f19'}}
                         <picture class="amp-ca-image">
                             {{#roundelProperties}}
@@ -67,6 +68,7 @@
                         </picture>
                     {{/iff}}
 
+                    {{!-- banner render type --}}
                     {{#iff [@type] '==' 'http://schema.cms.amplience.com/1dc05e15-e2cb-4b7a-84d6-354bc31aae7b'}}
                         <div class="amp-ca-banner js_ca_banner">
                             <div class="amp-ca-banner-pic-wrap">
@@ -166,6 +168,7 @@
                         </div>
                     {{/iff}}
 
+                    {{!-- video render type --}}
                     {{#iff [@type] '==' 'http://schema.cms.amplience.com/eac8a783-932e-4900-bd96-bcaa84646499'}}
                         {{#if video}}
                             <div class ='amp-ca-video-wrap'>
