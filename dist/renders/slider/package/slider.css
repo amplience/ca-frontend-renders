@@ -30,6 +30,7 @@
   text-align: center;
   font-size: 22px;
   position: relative;
+  line-height: 1;
 }
 
 .amp-ca-slider .amp-ca-slider-next, .amp-ca-slider .amp-ca-slider-prev {
