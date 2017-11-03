@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://schema.cms.amplience.com/{{self.id}}",
+  "meta": {
+    "name": "Image",
+    "description": "",
+    "context": "http://context.cms.amplience.com/{{self.context.id}}",
+    "icons": [
+      {
+        "size": 256,
+        "url": "http://solutions.adis.ws.s3.amazonaws.com/ca/icons/imagewithroundelicon.png"
+      }
+    ],
+    "card": [
+      {
+        "id": "defaultCard",
+        "category": "card",
+        "default": true,
+        "label": "Default card",
+        "uri": "//apps.dev-artifacts.adis.ws/cms-cards/master/latest/gallery/index.html",
+        "mapping": {
+          "headline": "/_title",
+          "image0": "/image"
+        }
+      },
+      {
+        "id": "defaultviz",
+        "category": "visualization",
+        "default": true,
+        "label": "Default Visualization",
+        "uri": "https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/renders/image/package/visualisation.html"
+      }
+    ]
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/self"
+    },
+    {
+      "$ref": "http://schema.system.cms.amplience.com/v0.0#/content-base"
+    }
+  ],
+  "definitions": {
+    "self": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "http://schema.system.cms.amplience.com/v0.0#/di-asset-link"
+            },
+            {
+              "properties": {
+                "mediaType": {
+                  "enum": [
+                    "image"
+                  ]
+                }
+              }
+            }
+          ],
+          "_label": {
+            "value": "Image",
+            "hint": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/asset"
+        },
+        "imageAltText": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 150,
+          "_label": {
+            "value": "Image alt text",
+            "hint": "",
+            "validation": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/text"
+        },
+        "seoText": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 100,
+          "_label": {
+            "value": "SEO Text",
+            "hint": "e.g. ladies-sunglasses",
+            "validation": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/text"
+        },
+        "roundel": {
+          "type": "array",
+          "items": {
+            "$ref": "http://schema.cms.amplience.com/{{roundel.id}}",
+            "_label": {
+              "value": "Roundel",
+              "hint": ""
+            },
+            "_semanticType": "http://semantic-type.cms.amplience.com/content"
+          },
+          "minItems": 0,
+          "maxItems": 1,
+          "_interpolate": true,
+          "_label": {
+            "value": "Roundel",
+            "hint": ""
+          },
+          "_semanticType": "http://semantic-type.cms.amplience.com/list"
+        }
+      },
+      "required": []
+    }
+  }
+}
