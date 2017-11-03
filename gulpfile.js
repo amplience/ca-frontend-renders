@@ -254,27 +254,6 @@ gulp.task('salesforce-types-copy', ['salesforce-dist-copy'], function () {
         .pipe(gulp.dest('dist/salesforce/renders/'))
 });
 
-gulp.task('salesforce-templates-copy', ['salesforce-dist-copy'], function () {
-    var paths = [];
-    var neededTemplates = [
-        'image',
-        'text',
-        'video',
-        'externalBlock',
-        'promoBanner'
-    ]
-
-    neededTemplates.forEach(function(render){
-        paths.push('src/renders/' + render + '/templates/*.hbs')
-    });
-
-    return gulp.src(paths)
-        .pipe(rename(function (path) {
-            path.dirname = path.basename;
-        }))
-        .pipe(gulp.dest('dist/salesforce/renders/'))
-});
-
 gulp.task('salesforce-templates-move', ['salesforce-dist-copy'], function () {
 
     return gulp.src(['src/salesforce/templates/**'])
@@ -359,7 +338,7 @@ gulp.task('build', ['del', 'copy-node-modules', 'addLoryLicense', 'addShowdownLi
 
 });
 
-gulp.task('buildSalesforce', ['salesforce-dist-copy', 'concatAllSalesforce', 'salesforce-types-copy', 'salesforce-templates-copy', 'salesforce-templates-move'], function () {
+gulp.task('buildSalesforce', ['salesforce-dist-copy', 'concatAllSalesforce', 'salesforce-types-copy', 'salesforce-templates-move'], function () {
 
 });
 
