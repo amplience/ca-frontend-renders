@@ -37,6 +37,17 @@ if (typeof Handlebars !== 'undefined') {
         return new Handlebars.SafeString(matchedTemplate(context));
     });
 
+    Handlebars.registerHelper('matchType', function (id, renderName, opts) {
+        if(!renderTypes){
+            return new Handlebars.SafeString('renderTypes are undefined');
+        }
+
+        var parsedId = id.indexOf('/') === -1 ? id : id.substring(id.lastIndexOf('/') + 1, id.length);
+        if (renderTypes[renderName] === parsedId) {
+            return opts.fn(this);
+        }
+    });
+
     Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
         lvalue = parseFloat(lvalue);
         rvalue = parseFloat(rvalue);
@@ -50,14 +61,23 @@ if (typeof Handlebars !== 'undefined') {
         }[operator];
     });
 
-    Handlebars.registerHelper('bannerConfig',function (opts) {
+    Handlebars.registerHelper('bannerConfig', function (opts) {
         hex = this.bannerColor || '#fff';
         alpha = this.bannerOpacity || 1;
-        hex   = hex.replace('#', '');
-        var r = parseInt(hex.length == 3 ? hex.slice(0, 1).repeat(2) : hex.slice(0, 2), 16);
-        var g = parseInt(hex.length == 3 ? hex.slice(1, 2).repeat(2) : hex.slice(2, 4), 16);
-        var b = parseInt(hex.length == 3 ? hex.slice(2, 3).repeat(2) : hex.slice(4, 6), 16);
-        if ( alpha ) {
+        hex = hex.replace('#', '');
+
+        if (hex.length === 3) {
+            var hexArr = hex.split('');
+            hex = hexArr[0] + hexArr[0];
+            hex += (hexArr[1] + hexArr[1]);
+            hex += (hexArr[2] + hexArr[2]);
+        }
+
+        var r = parseInt(hex.slice(0, 2), 16);
+        var g = parseInt(hex.slice(2, 4), 16);
+        var b = parseInt(hex.slice(4, 6), 16);
+
+        if (alpha) {
             return 'background-color:rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + '); ';
         }
         else {
@@ -150,7 +170,6 @@ if (typeof Handlebars !== 'undefined') {
 
         return new Handlebars.SafeString(text);
     });
-
 }
 
 else {

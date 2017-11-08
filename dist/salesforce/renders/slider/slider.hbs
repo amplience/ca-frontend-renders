@@ -4,7 +4,7 @@
             {{#each slides}}
                 <li class="amp-ca-slider-slide js_ca_slide">
                     {{!-- image render type --}}
-                    {{#iff [@type] '==' 'http://schema.cms.amplience.com/f0b1f9c8-9fbd-4470-aeb2-543c3cb01f19'}}
+                    {{#matchType [@type] 'image'}}
                         <picture class="amp-ca-image">
                             {{#roundelProperties}}
                                 <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
@@ -66,10 +66,10 @@
                                      class="amp-ca-image-pic" {{#if imageAltText}} alt="{{imageAltText}}" {{/if}}/>
                             {{/roundelProperties}}
                         </picture>
-                    {{/iff}}
+                    {{/matchType}}
 
                     {{!-- banner render type --}}
-                    {{#iff [@type] '==' 'http://schema.cms.amplience.com/1dc05e15-e2cb-4b7a-84d6-354bc31aae7b'}}
+                    {{#matchType [@type] 'banner'}}
                         <div class="amp-ca-banner js_ca_banner">
                             <div class="amp-ca-banner-pic-wrap">
                                 {{#image}}
@@ -166,10 +166,10 @@
                                 </div>
                             </div>
                         </div>
-                    {{/iff}}
+                    {{/matchType}}
 
                     {{!-- video render type --}}
-                    {{#iff [@type] '==' 'http://schema.cms.amplience.com/eac8a783-932e-4900-bd96-bcaa84646499'}}
+                    {{#matchType [@type] 'video'}}
                         {{#if video}}
                             <div class ='amp-ca-video-wrap'>
                                 <video class="amp-ca-video" poster="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}?protocol=https"
@@ -189,7 +189,7 @@
                                 <div class="pause-button inactive"></div>
                             </div>
                         {{/if}}
-                    {{/iff}}
+                    {{/matchType}}
                 </li>
             {{/each}}
         </ul>
