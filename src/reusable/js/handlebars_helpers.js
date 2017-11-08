@@ -43,11 +43,8 @@ if (typeof Handlebars !== 'undefined') {
         }
 
         var parsedId = id.indexOf('/') === -1 ? id : id.substring(id.lastIndexOf('/') + 1, id.length);
-
-        for (var render in renderTypes) {
-            if(renderTypes[render] === parsedId){
-                return opts.fn(this);
-            }
+        if (renderTypes[renderName] === parsedId) {
+            return opts.fn(this);
         }
     });
 

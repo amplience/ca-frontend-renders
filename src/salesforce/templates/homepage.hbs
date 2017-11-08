@@ -3,7 +3,7 @@
         <div class="amp-ca-block-wrap">
 
             {{!-- image render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/f0b1f9c8-9fbd-4470-aeb2-543c3cb01f19'}}
+            {{#matchType [@type] 'image'}}
                 <picture class="amp-ca-image">
                     {{#roundelProperties}}
                         <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
@@ -65,10 +65,10 @@
                              class="amp-ca-image-pic" {{#if imageAltText}} alt="{{imageAltText}}" {{/if}}/>
                     {{/roundelProperties}}
                 </picture>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- banner render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/1dc05e15-e2cb-4b7a-84d6-354bc31aae7b'}}
+            {{#matchType [@type] 'banner'}}
                 <div class="amp-ca-banner js_ca_banner">
                     <div class="amp-ca-banner-pic-wrap">
                         {{#image}}
@@ -165,10 +165,10 @@
                         </div>
                     </div>
                 </div>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- video render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/eac8a783-932e-4900-bd96-bcaa84646499'}}
+            {{#matchType [@type] 'video'}}
                 {{#if video}}
                     <div class='amp-ca-video-wrap'>
                         <video class="amp-ca-video"
@@ -189,10 +189,10 @@
                         <div class="pause-button inactive"></div>
                     </div>
                 {{/if}}
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- promoBanner render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/4abaf1ef-79a4-4963-b020-25314ad1cfef'}}
+            {{#matchType [@type] 'promoBanner'}}
                 <div class="amp-ca-promo-banner-wrap">
                     <div class="amp-ca-promo-banner">
                         <div class="amp-ca-promo-banner-wrap">
@@ -215,22 +215,22 @@
                         </div>
                     </div>
                 </div>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- externalBlock render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/c0e08561-496e-415c-9858-2c34ec635513'}}
+            {{#matchType [@type] 'externalBlock'}}
                 <div class="amp-ca-external-block js_ca_external_block">
                     {{{external}}}
                 </div>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- splitBlock render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/9d8300df-e2a5-44da-82c0-76a768b246ec'}}
+            {{#matchType [@type] 'splitBlock'}}
                 <div class="amp-ca-splitBlock{{#if split}}{{else}} full-size{{/if}}">
                     {{#each content}}
                         <div class="amp-ca-split-part {{splitBlock @index ../split}}">
                             {{!-- image render type --}}
-                            {{#iff [@type] '==' 'http://schema.cms.amplience.com/f0b1f9c8-9fbd-4470-aeb2-543c3cb01f19'}}
+                            {{#matchType [@type] 'image'}}
                                 <picture class="amp-ca-image">
                                     {{#roundelProperties}}
                                         <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
@@ -292,10 +292,10 @@
                                              class="amp-ca-image-pic" {{#if imageAltText}} alt="{{imageAltText}}" {{/if}}/>
                                     {{/roundelProperties}}
                                 </picture>
-                            {{/iff}}
+                            {{/matchType}}
 
                             {{!-- video render type --}}
-                            {{#iff [@type] '==' 'http://schema.cms.amplience.com/eac8a783-932e-4900-bd96-bcaa84646499'}}
+                            {{#matchType [@type] 'video'}}
                                 {{#if video}}
                                     <div class='amp-ca-video-wrap'>
                                         <video class="amp-ca-video"
@@ -316,29 +316,28 @@
                                         <div class="pause-button inactive"></div>
                                     </div>
                                 {{/if}}
-                            {{/iff}}
+                            {{/matchType}}
 
                             {{!-- text render type --}}
-                            {{#iff [@type] '==' 'http://schema.cms.amplience.com/c6fe6238-4752-47bc-bc5e-3413d0d08d30'}}
+                            {{#matchType [@type] 'text'}}
                                 <div class="amp-ca-text">
                                     {{{showdown text}}}
                                 </div>
-                            {{/iff}}
+                            {{/matchType}}
                         </div>
                     {{/each}}
                 </div>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- slider render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/7940d31f-513c-405b-b7b8-f60e6af8420a'}}
-                <div class="amp-ca-slider js_slider" data-infinite="{{loop}}" data-autoplay="{{autoplay}}"
-                     data-navigation="{{navigationDots}}">
+            {{#matchType [@type] 'slider'}}
+                <div class="amp-ca-slider js_slider" data-infinite="{{loop}}" data-autoplay="{{autoplay}}" data-navigation="{{navigationDots}}">
                     <div class="amp-ca-slider-frame js_frame">
                         <ul class="amp-ca-slider-slides js_slides">
                             {{#each slides}}
                                 <li class="amp-ca-slider-slide js_ca_slide">
                                     {{!-- image render type --}}
-                                    {{#iff [@type] '==' 'http://schema.cms.amplience.com/f0b1f9c8-9fbd-4470-aeb2-543c3cb01f19'}}
+                                    {{#matchType [@type] 'image'}}
                                         <picture class="amp-ca-image">
                                             {{#roundelProperties}}
                                                 <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
@@ -368,8 +367,7 @@
                                                 <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}}"
                                                      srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x,
              //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
-                                                     class="amp-ca-image-pic" {{#if imageAltText}}
-                                                     alt="{{imageAltText}}" {{/if}}/>
+                                                     class="amp-ca-image-pic" {{#if imageAltText}} alt="{{imageAltText}}" {{/if}}/>
                                             {{else}}
                                                 <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x"
                                                         media="(min-width: 1280px)"
@@ -398,14 +396,13 @@
                                                 <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600"
                                                      srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x,
              //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200 2x"
-                                                     class="amp-ca-image-pic" {{#if imageAltText}}
-                                                     alt="{{imageAltText}}" {{/if}}/>
+                                                     class="amp-ca-image-pic" {{#if imageAltText}} alt="{{imageAltText}}" {{/if}}/>
                                             {{/roundelProperties}}
                                         </picture>
-                                    {{/iff}}
+                                    {{/matchType}}
 
                                     {{!-- banner render type --}}
-                                    {{#iff [@type] '==' 'http://schema.cms.amplience.com/1dc05e15-e2cb-4b7a-84d6-354bc31aae7b'}}
+                                    {{#matchType [@type] 'banner'}}
                                         <div class="amp-ca-banner js_ca_banner">
                                             <div class="amp-ca-banner-pic-wrap">
                                                 {{#image}}
@@ -438,8 +435,7 @@
                                                             <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}}"
                                                                  srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200&$roundel$&{{roundelConfig roundel}} 2x,
              //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600&$roundel$&{{roundelConfig roundel}} 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200&$roundel$&{{roundelConfig roundel}} 2x"
-                                                                 class="amp-ca-image-pic" {{#if imageAltText}}
-                                                                 alt="{{imageAltText}}" {{/if}}/>
+                                                                 class="amp-ca-image-pic" {{#if imageAltText}} alt = "{{imageAltText}}" {{/if}}/>
                                                         {{else}}
                                                             <source srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x"
                                                                     media="(min-width: 1280px)"
@@ -468,8 +464,7 @@
                                                             <img src="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600"
                                                                  srcset="//{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}.webp?w=3200 2x,
              //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=1600 1x, //{{image.defaultHost}}/i/{{image.endpoint}}/{{image.name}}{{#if seoText}}/{{escapeUrl seoText}}{{/if}}?w=3200 2x"
-                                                                 class="amp-ca-image-pic" {{#if imageAltText}}
-                                                                 alt="{{imageAltText}}" {{/if}}/>
+                                                                 class="amp-ca-image-pic" {{#if imageAltText}} alt = "{{imageAltText}}" {{/if}}/>
                                                         {{/roundelProperties}}
                                                     </picture>
                                                 {{/image}}
@@ -487,8 +482,7 @@
                                                 {{/unless}}"
                                                  data-align="{{#if alignment}}{{alignment}}{{else}}left{{/if}}">
 
-                                                <div class="amp-ca-banner-info"
-                                                     style="{{#bannerConfig}} {{/bannerConfig}}">
+                                                <div class="amp-ca-banner-info" style="{{#bannerConfig}} {{/bannerConfig}}">
                                                     {{#if header}}
                                                         <div class="amp-ca-banner-header">{{header}}</div>
                                                     {{/if}}
@@ -505,16 +499,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    {{/iff}}
+                                    {{/matchType}}
 
                                     {{!-- video render type --}}
-                                    {{#iff [@type] '==' 'http://schema.cms.amplience.com/eac8a783-932e-4900-bd96-bcaa84646499'}}
+                                    {{#matchType [@type] 'video'}}
                                         {{#if video}}
-                                            <div class='amp-ca-video-wrap'>
-                                                <video class="amp-ca-video"
-                                                       poster="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}?protocol=https"
-                                                       controls
-                                                       src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/mp4_720p">
+                                            <div class ='amp-ca-video-wrap'>
+                                                <video class="amp-ca-video" poster="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}?protocol=https"
+                                                       controls src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/mp4_720p">
                                                     <source src="//{{video.defaultHost}}/v/{{video.endpoint}}/{{video.name}}/mp4_720p"
                                                             data-res="High" data-bitrate="2119" label="High"
                                                             type="video/mpeg4" codecs="h264">
@@ -530,18 +522,18 @@
                                                 <div class="pause-button inactive"></div>
                                             </div>
                                         {{/if}}
-                                    {{/iff}}
+                                    {{/matchType}}
                                 </li>
                             {{/each}}
                         </ul>
-            <span class="amp-ca-slider-prev js_prev">
+                        <span class="amp-ca-slider-prev js_prev">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5">
                     <g>
                         <path d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"/>
                     </g>
                 </svg>
             </span>
-            <span class="amp-ca-slider-next js_next">
+                        <span class="amp-ca-slider-next js_next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5">
                     <g>
                         <path d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"/>
@@ -557,17 +549,17 @@
                         {{/if}}
                     </div>
                 </div>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- text render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/c6fe6238-4752-47bc-bc5e-3413d0d08d30'}}
+            {{#matchType [@type] 'text'}}
                 <div class="amp-ca-text">
                     {{{showdown text}}}
                 </div>
-            {{/iff}}
+            {{/matchType}}
 
             {{!-- cardList render type --}}
-            {{#iff [@type] '==' 'http://schema.cms.amplience.com/54e44352-19ac-49ed-b42a-2f2dc0bf771a'}}
+            {{#matchType [@type] 'cardList'}}
                 <div class="amp-ca-card-list
 {{#iff cards.length '<' 6}}amp-ca-prod-{{cards.length}}-rows
 {{else}}amp-ca-prod-3-rows{{/iff}}
@@ -667,7 +659,7 @@
                         {{/each}}
                     </div>
                 </div>
-            {{/iff}}
+            {{/matchType}}
         </div>
     {{/each}}
 </div>
