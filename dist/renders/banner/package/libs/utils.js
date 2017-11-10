@@ -11,7 +11,8 @@
             //url, callback, formatData, errorCallback
             var self = this;
             var xhr = new XMLHttpRequest();
-            xhr.overrideMimeType("application/json");
+            var mime = params.mime ? params.mime : "application/json"
+            xhr.overrideMimeType(mime);
             xhr.open('GET', params.url, true);
             xhr.onload = function () {
                 if (xhr.status === 200) {
