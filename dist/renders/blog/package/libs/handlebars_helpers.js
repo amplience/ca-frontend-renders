@@ -4,10 +4,13 @@
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
-        factory()();
+        factory()(Handlebars || null, renderTypes || null);
     }
 }(this, function () {
-    return function(Hbars, renderTypes){
+    return function(Hbars, renderTps){
+        if(renderTps && typeof renderTypes  === 'undefined'){
+            var renderTypes = renderTps;
+        }
         if(Hbars && typeof Handlebars === 'undefined'){
             Handlebars = Hbars;
         }
