@@ -231,8 +231,8 @@ gulp.task('renders-readme-copy', function () {
         .pipe(gulp.dest('dist/renders'))
 });
 
-gulp.task('salesforce-dist-copy', ['buildAll'], function () {
-    return gulp.src(['src/salesforce/**/*', '!src/salesforce/templates', '!src/salesforce/templates/**'])
+gulp.task('salesforce-dist-copy', ['buildAllWithoutReload'], function () {
+    return gulp.src(['src/salesforce/**/*', 'node_modules/cms-javascript-sdk/dist/cms-javascript-sdk.min.js', 'src/reusable/js/handlebars_helpers.js', '!src/salesforce/templates', '!src/salesforce/templates/**'])
         .pipe(gulp.dest('dist/salesforce'))
 });
 
@@ -342,12 +342,14 @@ gulp.task('buildSalesforce', ['salesforce-dist-copy', 'concatAllSalesforce', 'sa
 
 });
 
-gulp.task('buildAll', ['build', 'addDependencies', 'concatAll'], function () {
+gulp.task('buildAllWithoutReload', ['build', 'addDependencies', 'concatAll'])
+
+gulp.task('buildAll', ['buildAllWithoutReload'], function () {
     return gulp.src('*')
         .pipe(connect.reload());
 });
 
-gulp.task('buildAllSalesforce', ['buildAll', 'buildSalesforce'], function () {
+gulp.task('buildAllSalesforce', ['buildAllWithoutReload', 'buildSalesforce'], function () {
     return gulp.src('*')
         .pipe(connect.reload());
 });
@@ -372,7 +374,7 @@ gulp.task('watch', ['buildAll'], function () {
     })
 });
 
-gulp.task('watchSalesforce', ['buildAll', 'buildAllSalesforce'], function () {
+gulp.task('watchSalesforce', ['buildAllSalesforce'], function () {
     return watch(['./src/**/*'], function () {
         gulp.start('buildAllSalesforce')
     })
