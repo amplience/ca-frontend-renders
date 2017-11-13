@@ -25,7 +25,7 @@
             });
             var textArr = Array.prototype.slice.call(document.querySelectorAll('.amp-ca-text'));
             textArr.forEach(function (v) {
-                var html = v.innerHTML;
+                var html = v.innerHTML.replace(/^\s+/, '');
                 var text = converter.makeHtml(html);
                 v.innerHTML = text
             });
