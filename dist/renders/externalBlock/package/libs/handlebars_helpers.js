@@ -4,6 +4,8 @@
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
+        var renderTypes = typeof renderTypes !== 'undefined' ? renderTypes : null;
+        var Hbars = typeof Handlebars !== 'undefined' ? Handlebars : null;
         factory()(Handlebars || null, renderTypes || null);
     }
 }(this, function () {
