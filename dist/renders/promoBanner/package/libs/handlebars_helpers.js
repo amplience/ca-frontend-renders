@@ -4,9 +4,9 @@
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
-        var renderTypes = typeof renderTypes !== 'undefined' ? renderTypes : null;
-        var Hbars = typeof Handlebars !== 'undefined' ? Handlebars : null;
-        factory()(Handlebars || null, renderTypes || null);
+        var renderTypes = typeof root.renderTypes !== 'undefined' ? root.renderTypes : undefined;
+        var Hbars = typeof root.Handlebars !== 'undefined' ? root.Handlebars : undefined;
+        factory()(Hbars || null, renderTypes || null);
     }
 }(this, function () {
     return function(Hbars, renderTps){
