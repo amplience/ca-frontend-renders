@@ -45,17 +45,5 @@ This file is to be included in the header of the page.
 ## JS Initialization
 To properly display any render, it is needed to include initialization js file `dist/salesforce/initAll.js` at the bottom of html page (before renders html is included).
 
-## Render types
-In `dist/salesforce/renderTypes.js` you can find type ids for each content type. This information can be extracted from DAM. 
-In order for handlebars templates to work properly, you need to replace ids with the ones from your account.
-
-## Handlebars helpers
-Handlebars helpers are defined in `dist/salesforce/handlebars_helpers.js`. 
-They are needed to output and format data, coming from Handlebars templates. 
-
 ## CSS Dependencies
 All CSS dependencies for renders are included in one minified file: `dist/salesforce/styles.min.css` in the header of the page.
-
-## Visualisations
-```dist/salesforce/visualisation.html``` is used for visualisations in DAM. One visualisation file is used for all renders. 
-Make sure you define proper path to visualisation file in content types.
