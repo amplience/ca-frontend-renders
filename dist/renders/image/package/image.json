@@ -99,7 +99,7 @@
             "_semanticType": "http://semantic-type.cms.amplience.com/content"
           },
           "minItems": 0,
-          "maxItems": 1,
+          "maxItems": 4,
           "_interpolate": true,
           "_label": {
             "value": "Roundel",

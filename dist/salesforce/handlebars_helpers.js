@@ -9,11 +9,11 @@
         factory()(Hbars || null, renderTypes || null);
     }
 }(this, function () {
-    return function(Hbars, renderTps){
-        if(renderTps && typeof renderTypes  === 'undefined'){
+    return function (Hbars, renderTps) {
+        if (renderTps && typeof renderTypes === 'undefined') {
             var renderTypes = renderTps;
         }
-        if(Hbars && typeof Handlebars === 'undefined'){
+        if (Hbars && typeof Handlebars === 'undefined') {
             Handlebars = Hbars;
         }
 
@@ -106,23 +106,33 @@
 
             Handlebars.registerHelper('roundelConfig', function (roundel) {
                 if (roundel && roundel[0] && roundel[0].roundel && roundel[0].roundel.name) {
-                    var resultPosition = '';
-                    switch (roundel[0].roundelPosition) {
-                        case 'Bottom Right':
-                            resultPosition = 'p1_img=';
-                            break;
-                        case 'Bottom Left':
-                            resultPosition = 'p2_img=';
-                            break;
-                        case 'Top Left':
-                            resultPosition = 'p3_img=';
-                            break;
-                        case 'Top Right':
-                            resultPosition = 'p4_img=';
-                            break;
+
+                    var roundelParams = [];
+                    for (var x = 0; x < roundel.length; x++) {
+                        var roundelParam = '';
+                        switch (roundel[x].roundelPosition) {
+                            case 'Bottom Right':
+                                roundelParam = 'p1_img=';
+                                break;
+                            case 'Bottom Left':
+                                roundelParam = 'p2_img=';
+                                break;
+                            case 'Top Left':
+                                roundelParam = 'p3_img=';
+                                break;
+                            case 'Top Right':
+                                roundelParam = 'p4_img=';
+                                break;
+
+                        }
+
+                        var roundelRatio = roundel[x].roundelRatio
+                        roundelParam += roundel[x].roundel.name + (roundelRatio ? ('&roundelRatio=' + roundelRatio) : '');
+                        roundelParams.push(roundelParam);
                     }
-                    var roundelRatio = roundel[0].roundelRatio;
-                    return resultPosition + roundel[0].roundel.name + (roundelRatio ? ('&roundelRatio=' + roundelRatio) : '');
+
+                    return roundelParams.join('&')
+
                 } else {
                     return '';
                 }
