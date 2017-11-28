@@ -126,8 +126,9 @@
 
                         }
 
-                        var roundelRatio = roundel[x].roundelRatio
-                        roundelParam += roundel[x].roundel.name + (roundelRatio ? ('&roundelRatio=' + roundelRatio) : '');
+                        var roundelRatio = roundel[x].roundelRatio;
+                        var ratioIndex = x + 1;
+                        roundelParam += roundel[x].roundel.name + (roundelRatio ? ('&roundelRatio' + ratioIndex + '=' + roundelRatio) : '');
                         roundelParams.push(roundelParam);
                     }
 
