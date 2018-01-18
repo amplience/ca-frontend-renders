@@ -1,23 +1,39 @@
 <div class="amp-ca-card amp-ca-card-{{math addTemplateClassname '+' 1}}">
-    <div class="amp-ca-card-wrap">
-        {{dynamicTemplate false renderTypes image}}
+    {{#if link}}
+        <a class="amp-ca-card-wrap" href="{{link}}">
+    {{else}}
+        <div class="amp-ca-card-wrap">
+    {{/if}}
 
-        <div class="amp-ca-card-text-wrap">
-            {{#if cardName}}
-                <div class="amp-ca-card-name">{{cardName}}</div>
-            {{/if}}
-            {{#if description}}
-                <p class="amp-ca-card-description">{{description}}</p>
-            {{/if}}
-            {{#if link}}
-                <a class="amp-ca-card-link" href="{{link}}">
-                    {{#if linkValue}}
-                        {{linkValue}}
-                    {{else}}
-                        >>
-                    {{/if}}
-                </a>
-            {{/if}}
-        </div>
+    <div class="amp-ca-card-img-wrap">
+        {{dynamicTemplate false renderTypes image}}
     </div>
+
+    <div class="amp-ca-card-text-wrap">
+        {{#if cardName}}
+            <div class="amp-ca-card-name">{{cardName}}</div>
+        {{/if}}
+        {{#if description}}
+            <p class="amp-ca-card-description">{{description}}</p>
+        {{/if}}
+        {{#if link}}
+            <div class="amp-ca-card-link">
+                {{#if linkValue}}
+                    {{linkValue}}
+                {{else}}
+                    >>
+                {{/if}}
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="amp-ca-card-glow amp-ca-card-glow-top"></div>
+    <div class="amp-ca-card-glow amp-ca-card-glow-bottom"></div>
+
+    {{#if link}}
+        </a>
+    {{else}}
+        </div>
+    {{/if}}
+
 </div>
