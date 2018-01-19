@@ -94,7 +94,10 @@
                     "enum": [
                       "http://schema.cms.amplience.com/{{text.id}}",
                       "http://schema.cms.amplience.com/{{image.id}}",
-                      "http://schema.cms.amplience.com/{{video.id}}"
+                      "http://schema.cms.amplience.com/{{video.id}}",
+                      "http://schema.cms.amplience.com/{{slider.id}}",
+                      "http://schema.cms.amplience.com/{{card-list.id}}",
+                      "http://schema.cms.amplience.com/{{banner.id}}"
                     ]
                   }
                 }
