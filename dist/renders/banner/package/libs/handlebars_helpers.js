@@ -23,12 +23,12 @@
                 var result = false;
                 switch (operator) {
                     case '==':
-                        result = arr == val;
+                        result = arr.length == val;
                         break;
-                    case '<': result = arr < val;
+                    case '<': result = arr.length < val;
                         break;
                     case '>':
-                        result = arr > val;
+                        result = arr.length > val;
                         break;
                     default:
                         throw "Unknown operator " + operator;
