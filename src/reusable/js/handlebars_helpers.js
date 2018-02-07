@@ -18,6 +18,29 @@
         }
 
         if (typeof Handlebars !== 'undefined') {
+
+            Handlebars.registerHelper('compare_length', function (arr, operator, val, opts) {
+                var result = false;
+                switch (operator) {
+                    case '==':
+                        result = arr == val;
+                        break;
+                    case '<': result = arr < val;
+                        break;
+                    case '>':
+                        result = arr > val;
+                        break;
+                    default:
+                        throw "Unknown operator " + operator;
+                }
+
+                if (result) {
+                    return opts.fn(this);
+                } else {
+                    return opts.inverse(this);
+                }
+            });
+
             Handlebars.registerHelper('escapeUrl', function (url) {
                 if (!url || url.length < 1) {
                     return '';
