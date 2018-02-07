@@ -1,0 +1,156 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "id": "http://schema.cms.amplience.com/{{self.id}}",
+    "meta": {
+        "name": "Banner",
+        "description": "",
+        "context": "http://context.cms.amplience.com/{{self.context.id}}",
+        "icons": [
+            {
+                "size": 256,
+                "url": "http://solutions.adis.ws.s3.amazonaws.com/ca/icons/bannericon.png"
+            }
+        ],
+        "card": [
+            {
+                "id": "defaultCard",
+                "category": "card",
+                "default": true,
+                "label": "Default card",
+                "uri": "//apps.dev-artifacts.adis.ws/cms-cards/master/latest/gallery/index.html",
+                "mapping": {
+                    "headline": "/_title",
+                    "image0": "/image/image"
+                }
+            },
+            {
+                "id": "defaultviz",
+                "default": true,
+                "category": "visualization",
+                "label": "Default Visualization",
+                "uri": "https://dev-solutions.s3.amazonaws.com/ca-frontend-renders/dist/renders/banner/package/visualisation.html"
+            }
+        ]
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/self"
+        },
+        {
+            "$ref": "http://schema.system.cms.amplience.com/v0.0#/content-base"
+        }
+    ],
+    "definitions": {
+        "self": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "type": "object",
+                    "$ref": "http://schema.cms.amplience.com/{{image.id}}",
+                    "_semanticType": "http://semantic-type.cms.amplience.com/content",
+                    "_interpolate": true,
+                    "_label": {
+                        "value": "label",
+                        "hint": ""
+                    }
+                },
+                "subheader": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "_label": {
+                        "value": "Subheader",
+                        "hint": "",
+                        "validation": ""
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/text"
+                },
+                "header": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "_label": {
+                        "value": "Header",
+                        "hint": "",
+                        "validation": ""
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/text"
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 2000,
+                    "_label": {
+                        "value": "Description",
+                        "hint": "",
+                        "validation": ""
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/text"
+                },
+                "button": {
+                    "type": "object",
+                    "$ref": "http://schema.cms.amplience.com/{{link.id}}",
+                    "_semanticType": "http://semantic-type.cms.amplience.com/content",
+                    "_interpolate": true,
+                    "_label": {
+                        "value": "Button",
+                        "hint": ""
+                    }
+                },
+                "alignment": {
+                    "type": "string",
+                    "enum": [
+                        "left",
+                        "right"
+                    ],
+                    "_label": {
+                        "value": "Alignment",
+                        "hint": ""
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/enum"
+                },
+                "bannerColor": {
+                    "type": "string",
+                    "minLength": 7,
+                    "maxLength": 7,
+                    "_label": {
+                        "value": "Banner Color",
+                        "hint": "enter a hexref including the # e.g #ff00ff"
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/text"
+                },
+                "bannerOpacity": {
+                    "type": "number",
+                    "_label": {
+                        "value": "Banner Opacity",
+                        "hint": "enter a value beween 0 and 1 (e.g. 0.3)",
+                        "validation": "try again!"
+                    },
+                    "minimum": 0,
+                    "maximum": 1.01,
+                    "_semanticType": "http://semantic-type.cms.amplience.com/number"
+                },
+                "style": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 100,
+                    "_label": {
+                        "value": "Style",
+                        "hint": "Add classname for CSS styling",
+                        "validation": "Please enter between 0 and 100 characters"
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/text"
+                },
+                "stackMobileLayout": {
+                    "type": "boolean",
+                    "_label": {
+                        "value": "Stack Mobile Layout",
+                        "hint": "Enable to allow banner text to stack underneath the image on small screens"
+                    },
+                    "_semanticType": "http://semantic-type.cms.amplience.com/boolean"
+                }
+            },
+            "required": []
+        }
+    }
+}
