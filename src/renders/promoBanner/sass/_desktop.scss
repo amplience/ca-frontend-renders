@@ -2,10 +2,7 @@
   margin-left: auto;
   margin-right: auto;
   white-space: nowrap;
-  border: 2px solid #ccc;
-  padding: 15px 20px;
   overflow: hidden;
-  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   min-width: 400px;
 
@@ -15,21 +12,24 @@
   }
 
   .amp-ca-promo-banner-wrap {
-    margin-left: -50px;
+    display: table;
+    vertical-align: top;
+    width: 100%;
   }
 
   .amp-ca-promo-block {
-    width: 25%;
-    display: inline-block;
-    vertical-align: top;
+    display: table-cell;
     overflow: visible;
+    border: 4px solid transparent;
   }
 
   .amp-ca-promo-wrap {
-    margin-left: 50px;
     & > a {
-      display: inline-block;
+      display: block;
+      overflow: hidden;
+      border: 1px solid #eeeeee;
       text-decoration: none;
+      padding: 8px;
 
       & :hover {
         * {
@@ -39,17 +39,20 @@
     }
   }
 
-  .amp-ca-promo-text-wrap{
+  .amp-ca-promo-text-wrap {
     overflow: hidden;
   }
 
   .amp-ca-promo-ico {
     float: left;
     margin-right: 15px;
-    width: 40px;
-    height: 40px;
+    min-height: 40px;
     background-size: cover;
     background-repeat: no-repeat;
+
+    & > img {
+      display:block;
+    }
   }
 
   .amp-ca-promo-head-text {
@@ -68,5 +71,9 @@
     width: 100%;
     font-size: 14px;
     display: block;
+  }
+
+  .amp-ca-promo-center{
+    text-align:center;
   }
 }

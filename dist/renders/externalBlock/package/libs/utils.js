@@ -78,9 +78,60 @@
                 video: ['fixVideoButton'],
                 splitBlock: ['fixVideoButton'],
                 blog: ['fixVideoButton'],
-                homepage: ['fixVideoButton','fixAndroidSwipeOverTheVideo'],
+                homepage: ['fixVideoButton','fixAndroidSwipeOverTheVideo', 'promoBanner'],
+                promoBanner: ['promoBanner']
             },
             handlers: {
+                promoBanner: function () {
+                    var promoBanner = function ($node) {
+                        var $children = [].slice.call($node.querySelectorAll('.amp-ca-promo-block'));
+                        var currentItemNum = 2;
+                        var winWidth = window.innerWidth;
+
+                        if ($children.length < 2) {
+                            return;
+                        }
+
+                        $children.forEach(function ($child) {
+                            $children[currentItemNum - 1].classList.remove('ca-fade-in');
+                        });
+
+                        $children[currentItemNum - 1].classList.add('ca-fade-in');
+
+                        var getNextItem = function () {
+                            if (currentItemNum === $children.length) {
+                                currentItemNum = 1;
+
+                            }
+                            else {
+                                currentItemNum += 1;
+                            }
+
+                            return currentItemNum - 1;
+                        }
+
+                        var interval = setInterval(function () {
+                            winWidth = window.innerWidth;
+                            if (winWidth > 768) {
+                                $node.querySelectorAll('.ca-fade-in').classList.remove('ca-fade-in');
+                                return;
+                            }
+
+                            var itemToShow = getNextItem();
+
+                            $node.querySelector('.ca-fade-in').classList.remove('ca-fade-in');
+                            $children[itemToShow].classList.add('ca-fade-in');
+
+
+                        }, 5000);
+                    }
+
+                    var arr = [].slice.call(document.querySelectorAll('.amp-ca-promo-banner-wrap'));
+
+                    arr.forEach(function ($node) {
+                        promoBanner($node);
+                    });
+                },
                 fixAndroidSwipeOverTheVideo: function () {
                     if (navigator.userAgent.match(/Android/i)) {
                         var videos = document.querySelectorAll('.amp-ca-slider .amp-ca-video');
