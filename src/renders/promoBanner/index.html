@@ -45,6 +45,7 @@
         callback: function (data) {
             var template = Handlebars.template(AmpCa.templates.promoBanner);
             document.querySelectorAll(".js_promoBanner_wrap")[0].innerHTML = template(data[0]);
+            AmpCa.utils.postProcessing.exec('promoBanner', {});
         },
         formatData: function (data) {
             return amp.inlineContent(JSON.parse(data));
@@ -52,5 +53,6 @@
     });
 
 </script>
+
 </body>
 </html>
