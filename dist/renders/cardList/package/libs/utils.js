@@ -112,17 +112,18 @@
 
                         var interval = setInterval(function () {
                             winWidth = window.innerWidth;
+                            var $fadedElems = [].slice.call($node.querySelectorAll('.ca-fade-in'));
                             if (winWidth > 768) {
-                                $node.querySelectorAll('.ca-fade-in').classList.remove('ca-fade-in');
                                 return;
                             }
 
                             var itemToShow = getNextItem();
-
-                            $node.querySelector('.ca-fade-in').classList.remove('ca-fade-in');
+                            if ($fadedElems.length > 0) {
+                                $fadedElems.forEach(function ($fadeElem) {
+                                    $fadeElem.classList.remove('ca-fade-in');
+                                });
+                            }
                             $children[itemToShow].classList.add('ca-fade-in');
-
-
                         }, 5000);
                     }
 
