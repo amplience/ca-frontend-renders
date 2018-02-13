@@ -1,11 +1,6 @@
 @media screen and (max-width: 768px) {
   .amp-ca-splitBlock {
     .amp-ca-split-part {
-      .amp-ca-text{
-        padding-left:0;
-        padding-right:0;
-      }
-      padding: 0 40px;
       float: none;
       &.amp-ca-size-50 {
         width: 100%;
@@ -16,14 +11,10 @@
       &.amp-ca-size-30 {
         width: 100%;
       }
-    }
-  }
-}
 
-@media screen and (max-width: 480px) {
-  .amp-ca-splitBlock {
-    .amp-ca-split-part, .amp-ca-split-part:first-child {
-      padding: 0 10px;
+      &:first-child{
+        padding:0 0 30px 0;
+      }
     }
   }
 }

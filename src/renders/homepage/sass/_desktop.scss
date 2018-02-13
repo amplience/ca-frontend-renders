@@ -1,6 +1,7 @@
 .amp-ca-homepage {
   overflow: hidden;
   min-width: 400px;
+  margin:0 50px;
   * {
     marign: 0;
     padding: 0;
@@ -8,6 +9,7 @@
 
   .amp-ca-block-wrap {
     overflow: hidden;
+    margin-top:50px;
   }
 
   .amp-ca-promo-banner-wrap{
@@ -16,6 +18,7 @@
 
   .amp-ca-promo-banner{
     min-width:390px;
+    margin:0 -5px;
   }
 }
 
