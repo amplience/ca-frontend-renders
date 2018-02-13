@@ -1,4 +1,4 @@
-<div class="amp-ca-snippet js_ca_snippet">
+<a href="{{cta.value}}" class="amp-ca-snippet js_ca_snippet">
     {{#if image}}
         <div class="amp-ca-image">
             {{dynamicTemplate renderTypes.image renderTypes image}}
@@ -19,15 +19,15 @@
 
     {{#if cta}}
         {{#if cta.value}}
-            <div class = "amp-ca-link">
-                <a href="{{cta.value}}">
+            <div class="amp-ca-link">
+                <span class="amp-ca-snippet-more" href="{{cta.value}}">
                     {{#if cta.label}}
                         {{cta.label}}
                     {{else}}
                         Read more >>
                     {{/if}}
-                </a>
+                </span>
             </div>
         {{/if}}
     {{/if}}
-</div>
+</a>
