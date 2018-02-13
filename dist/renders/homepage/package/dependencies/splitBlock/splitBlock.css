@@ -11,7 +11,6 @@
   float: left;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding-right: 40px;
 }
 
 .amp-ca-splitBlock .amp-ca-split-part .amp-ca-text {
@@ -38,22 +37,13 @@
   width: 30%;
 }
 
-.amp-ca-splitBlock .amp-ca-image, .amp-ca-splitBlock .amp-ca-video {
-  margin: 20px auto;
-}
-
-.amp-ca-splitBlock.full-size > div {
-  padding: 0 40px;
+.amp-ca-splitBlock .amp-ca-split-part:first-child {
+  padding-right: 40px;
 }
 
 @media screen and (max-width: 768px) {
   .amp-ca-splitBlock .amp-ca-split-part {
-    padding: 0 40px;
     float: none;
-  }
-  .amp-ca-splitBlock .amp-ca-split-part .amp-ca-text {
-    padding-left: 0;
-    padding-right: 0;
   }
   .amp-ca-splitBlock .amp-ca-split-part.amp-ca-size-50 {
     width: 100%;
@@ -64,10 +54,7 @@
   .amp-ca-splitBlock .amp-ca-split-part.amp-ca-size-30 {
     width: 100%;
   }
-}
-
-@media screen and (max-width: 480px) {
-  .amp-ca-splitBlock .amp-ca-split-part, .amp-ca-splitBlock .amp-ca-split-part:first-child {
-    padding: 0 10px;
+  .amp-ca-splitBlock .amp-ca-split-part:first-child {
+    padding: 0 0 30px 0;
   }
 }
