@@ -81,7 +81,7 @@
   font-size: 20px;
   margin-top: 15px;
   display: inline-block;
-  width: 100%;
+  min-width: 40%;
   padding: 17px 15px;
   background: #fff;
   text-decoration: none;

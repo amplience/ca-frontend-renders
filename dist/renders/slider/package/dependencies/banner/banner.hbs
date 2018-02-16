@@ -13,7 +13,11 @@
                 {{/unless}}
             {{/unless}}
         {{/unless}}"
-         data-align="{{#if alignment}}{{alignment}}{{else}}left{{/if}}">
+         data-align="{{#if alignment}}{{alignment}}{{else}}left{{/if}}"
+         style="
+             {{#if textPositionLeft}}left:{{textPositionLeft}}%;{{/if}}
+             {{#if textPositionTop}}top:{{textPositionTop}}%;{{/if}}"
+    >
 
         <div class="amp-ca-banner-info" style="{{#bannerConfig}} {{/bannerConfig}}">
             {{#if header}}

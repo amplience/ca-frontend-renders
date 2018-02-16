@@ -104,6 +104,7 @@
             });
 
             Handlebars.registerHelper('bannerConfig', function (opts) {
+                var style = '';
                 hex = this.bannerColor || '#fff';
                 alpha = this.bannerOpacity || 1;
                 hex = hex.replace('#', '');
@@ -120,11 +121,17 @@
                 var b = parseInt(hex.slice(4, 6), 16);
 
                 if (alpha) {
-                    return 'background-color:rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + '); ';
+                    style += 'background-color:rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + '); ';
                 }
                 else {
-                    return 'background-color:rgb(' + r + ', ' + g + ', ' + b + '); ';
+                    style += 'background-color:rgb(' + r + ', ' + g + ', ' + b + '); ';
                 }
+
+                if(this.textColour){
+                    style += 'color: #' + this.textColour;
+                }
+
+                return style;
             });
 
             Handlebars.registerHelper('roundelConfig', function (roundel) {
