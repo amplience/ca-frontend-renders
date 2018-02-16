@@ -1,14 +1,25 @@
 .amp-ca-homepage {
   overflow: hidden;
-  min-width: 400px;
-  margin:0 50px;
-  * {
-    marign: 0;
-    padding: 0;
-  }
-
+  min-width: 360px;
+  max-width:1600px;
+  margin:0 auto;
   .amp-ca-block-wrap {
     margin-top:50px;
+  }
+
+  .amp-ca-text{
+    margin:0 25px;
+  }
+
+  .amp-ca-splitBlock{
+    overflow: hidden;
+    .amp-ca-text{
+      margin-left:0;
+    }
+  }
+
+  .amp-ca-splitBlock{
+    overflow: hidden;
   }
 
   .amp-ca-promo-banner-wrap{
@@ -16,13 +27,13 @@
   }
 
   .amp-ca-promo-banner{
-    min-width:390px;
+    min-width:360px;
     margin:-70px -5px 0 -5px;
   }
 }
 
 .header-wrap {
-  min-width: 400px;
+  min-width: 360px;
   ul {
     list-style: none;
   }
@@ -75,6 +86,8 @@
   .customer-menu {
     float: right;
     height: 40px;
+    margin:0;
+    padding:0;
     & > li {
       display: inline-block;
       vertical-align: top;

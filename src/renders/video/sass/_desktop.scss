@@ -7,12 +7,14 @@
 }
 .amp-ca-video-wrap {
   position: relative;
+  margin:0;
+  padding:0;
   .amp-ca-video {
     user-select: none;
     margin: 0 auto;
     display: block;
     width: 100%;
-    min-width: 400px;
+    min-width: 360px;
   }
   .pause-button {
     cursor: pointer;

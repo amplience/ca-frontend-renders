@@ -1,16 +1,28 @@
 .amp-ca-homepage {
   overflow: hidden;
-  min-width: 400px;
-  margin: 0 50px;
-}
-
-.amp-ca-homepage * {
-  marign: 0;
-  padding: 0;
+  min-width: 360px;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .amp-ca-homepage .amp-ca-block-wrap {
   margin-top: 50px;
+}
+
+.amp-ca-homepage .amp-ca-text {
+  margin: 0 25px;
+}
+
+.amp-ca-homepage .amp-ca-splitBlock {
+  overflow: hidden;
+}
+
+.amp-ca-homepage .amp-ca-splitBlock .amp-ca-text {
+  margin-left: 0;
+}
+
+.amp-ca-homepage .amp-ca-splitBlock {
+  overflow: hidden;
 }
 
 .amp-ca-homepage .amp-ca-promo-banner-wrap {
@@ -18,12 +30,12 @@
 }
 
 .amp-ca-homepage .amp-ca-promo-banner {
-  min-width: 390px;
+  min-width: 360px;
   margin: -70px -5px 0 -5px;
 }
 
 .header-wrap {
-  min-width: 400px;
+  min-width: 360px;
 }
 
 .header-wrap ul {
@@ -78,6 +90,8 @@
 .header-wrap .customer-menu {
   float: right;
   height: 40px;
+  margin: 0;
+  padding: 0;
 }
 
 .header-wrap .customer-menu > li {
@@ -109,12 +123,6 @@
   }
   .header-wrap .top-menu {
     display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .amp-ca-homepage {
-    margin: 0 25px;
   }
 }
 

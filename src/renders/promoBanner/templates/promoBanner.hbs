@@ -13,8 +13,13 @@
                             </picture>
                         {{/if}}
                         <div class="amp-ca-promo-text-wrap">
-                            <div class="amp-ca-promo-head-text">{{topLine}}</div>
-                            <div class="amp-ca-promo-content-text">{{bottomLine}}</div>
+                            <div class="amp-ca-promo-head-text"
+                                {{#if toplineColour}}style="color:#{{toplineColour}}"{{/if}}>
+                                {{topLine}}
+                            </div>
+                            <div class="amp-ca-promo-content-text"
+                                 {{#if bottomlineColour}}style="color:#{{bottomlineColour}}"{{/if}}
+                            >{{bottomLine}}</div>
                         </div>
                     </a>
                 </div>

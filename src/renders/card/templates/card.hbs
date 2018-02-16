@@ -1,6 +1,8 @@
 <div class="amp-ca-card amp-ca-card-{{math addTemplateClassname '+' 1}}">
     {{#if link}}
-        <a class="amp-ca-card-wrap" href="{{link}}">
+        <a class="amp-ca-card-wrap" href="{{link}}"
+           {{#if textBackgroundColour}}style="background: #{{textBackgroundColour}};"{{/if}}
+        >
     {{else}}
         <div class="amp-ca-card-wrap">
     {{/if}}
@@ -30,10 +32,10 @@
     <div class="amp-ca-card-glow amp-ca-card-glow-top"></div>
     <div class="amp-ca-card-glow amp-ca-card-glow-bottom"></div>
 
-    {{#if link}}
-        </a>
-    {{else}}
-        </div>
-    {{/if}}
+{{#if link}}
+    </a>
+{{else}}
+    </div>
+{{/if}}
 
 </div>

@@ -1,14 +1,9 @@
 .amp-ca-blog {
   overflow: hidden;
   margin: 40px auto;
-  min-width: 400px;
+  min-width: 360px;
   max-width:980px;
   padding: 0 20px;
-
-  * {
-    marign: 0;
-    padding: 0;
-  }
 
   .amp-ca-blog-title {
     font-size: 2em;
@@ -26,7 +21,7 @@
     white-space: nowrap;
     width: 100%;
     display: block;
-    min-width: 400px;
+    min-width: 360px;
     img {
       width: 100%;
       user-select: none;

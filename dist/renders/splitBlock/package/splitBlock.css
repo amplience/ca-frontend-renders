@@ -1,9 +1,6 @@
 .amp-ca-splitBlock {
-  min-width: 400px;
-}
-
-.amp-ca-splitBlock * {
-  marign: 0;
+  min-width: 360px;
+  margin: 0;
   padding: 0;
 }
 
