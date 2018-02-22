@@ -1,7 +1,9 @@
 <div class="amp-ca-splitBlock{{#if split}}{{else}} full-size{{/if}}">
     {{#each content}}
         <div class="amp-ca-split-part {{splitBlock @index ../split}}">
-            {{dynamicTemplate [@type] ../renderTypes this}}
+            <div class="amp-ca-split-part-wrap">
+                {{dynamicTemplate [@type] ../renderTypes this}}
+            </div>
         </div>
     {{/each}}
 </div>
