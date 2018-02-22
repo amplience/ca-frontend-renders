@@ -11,7 +11,16 @@
         {{dynamicTemplate false renderTypes image}}
     </div>
 
-    <div class="amp-ca-card-text-wrap">
+
+    <div class="amp-ca-card-text-wrap
+        {{#unless cardName}}
+            {{#unless description}}
+                {{#unless link}}
+                        amp-ca-hide
+                 {{/unless}}
+            {{/unless}}
+        {{/unless}}">
+
         {{#if cardName}}
             <div class="amp-ca-card-name">{{cardName}}</div>
         {{/if}}
@@ -28,9 +37,6 @@
             </div>
         {{/if}}
     </div>
-
-    <div class="amp-ca-card-glow amp-ca-card-glow-top"></div>
-    <div class="amp-ca-card-glow amp-ca-card-glow-bottom"></div>
 
 {{#if link}}
     </a>

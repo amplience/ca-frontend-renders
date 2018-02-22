@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+.amp-ca-card .amp-ca-hide {
+  display: none;
+}
+
 .amp-ca-card .amp-ca-card-text-wrap {
   padding: 10px 0;
   text-align: center;
