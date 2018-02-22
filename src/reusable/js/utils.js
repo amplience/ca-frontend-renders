@@ -89,6 +89,7 @@
                         var winWidth = window.innerWidth;
 
                         if ($children.length < 2) {
+                            $children[0].classList.add('ca-fade-in');
                             return;
                         }
 
