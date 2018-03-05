@@ -12,8 +12,19 @@
         width: 100%;
       }
 
-      &:first-child{
-        padding:0 0 30px 0;
+      &:first-child {
+        padding: 0 0 30px 0;
+      }
+
+      .amp-ca-split-part-wrap {
+        padding-left: 0;
+      }
+
+      &:first-child {
+        .amp-ca-split-part-wrap {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
     }
   }
