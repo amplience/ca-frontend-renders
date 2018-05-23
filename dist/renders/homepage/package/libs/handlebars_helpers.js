@@ -138,27 +138,31 @@
                 if (roundel && roundel[0] && roundel[0].roundel && roundel[0].roundel.name) {
 
                     var roundelParams = [];
+                    var imageRoundelIndex;
                     for (var x = 0; x < roundel.length; x++) {
                         var roundelParam = '';
                         switch (roundel[x].roundelPosition) {
                             case 'Bottom Right':
                                 roundelParam = 'p1_img=';
+                                imageRoundelIndex = 1;
                                 break;
                             case 'Bottom Left':
                                 roundelParam = 'p2_img=';
+                                imageRoundelIndex = 2;
                                 break;
                             case 'Top Left':
                                 roundelParam = 'p3_img=';
+                                imageRoundelIndex = 3;
                                 break;
                             case 'Top Right':
                                 roundelParam = 'p4_img=';
+                                imageRoundelIndex = 4;
                                 break;
 
                         }
 
                         var roundelRatio = roundel[x].roundelRatio;
-                        var ratioIndex = x + 1;
-                        roundelParam += roundel[x].roundel.name + (roundelRatio ? ('&roundelRatio' + ratioIndex + '=' + roundelRatio) : '');
+                        roundelParam += roundel[x].roundel.name + (roundelRatio ? ('&roundelRatio' + imageRoundelIndex + '=' + roundelRatio) : '');
                         roundelParams.push(roundelParam);
                     }
 

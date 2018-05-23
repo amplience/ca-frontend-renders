@@ -1,0 +1,51 @@
+
+{
+  "$schema": "http://bigcontent.io/cms/schema/v1/schema#",
+  "id": "https://dev-solutions.s3.amazonaws.com/DynamicContentTypes/Accelerators/promobannersection.json",
+
+  "title": "Promo Banner Section",
+  "description": "Promo Banner Section",
+
+  "allOf": [{
+    "$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/content"
+  }],
+
+  "propertyOrder": ["icon","topLine","bottomLine","link"],
+
+  "type": "object",
+  "properties": {
+    "icon": {
+      "title": "Icon",
+      "description": "insert a PNG to be used as an icon",
+      "type": "object",
+      "allOf": [{
+        "$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/image-link"
+      }]
+    },
+
+    "topLine": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength":12,
+      "title": "Top Line",
+      "description": "Enter top line of the promo banner section"
+    },
+
+    "bottomLine": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength":15,
+      "title": "Bottom Line",
+      "description": "Enter bottom line of the promo banner section"
+    },
+
+    "link": {
+      "title": "Link",
+      "description": "",
+      "type": "object",
+      "allOf": [{
+        "$ref": "https://dev-solutions.s3.amazonaws.com/DynamicContentTypes/Accelerators/link.json"
+      }]
+    }
+  }
+}
